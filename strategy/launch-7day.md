@@ -4,9 +4,10 @@
 
 | 날짜 (KST) | 할 일 |
 |---|---|
-| 10/24(토) | 기준선 측정, README 데모 GIF, Windows SmartScreen 안내, Reddit·HN 계정 조건 확인, 뉴스레터·awesome 리스트 제출, 크리에이터 30명 연락, Lobsters 초대 요청 |
-| 10/25(일) | 한국·일본·중국권 선공개: GeekNews, 한국 개발 커뮤니티, Threads, Qiita·Zenn, V2EX. 여기서 나온 초기 스타가 GitHub Trending의 바탕 |
-| 10/26(월) | 22:00 Show HN (미국 동부 오전 9시). 이후 6시간 모든 댓글에 답변. Reddit은 계정 조건을 충족한 서브레딧에만 1시간 간격 |
+| 10/24(토) | 기준선 측정, 대기 명단(이슈 #1) 공개, README 데모 GIF, Windows SmartScreen 안내, HN·Reddit·GeekNews 계정 조건 확인, awesome-claude-code·Terminal Trove·Console.dev 제출, 크리에이터 연락, Lobsters 초대 요청 |
+| 10/24~25 **Show HN 전 필수** | 반론 #10 해소: Ferryx README·사이트에서 QR 표기 삭제("6-digit PIN pairing"), Gemini CLI → Antigravity, 에이전트 수 16으로 통일, "never lose work"·"free and open" 문구 삭제. 커밋 링크를 objections.md에 기록. **미완료 시 Show HN 연기** |
+| 10/25(일) | 아시아권 선공개: GeekNews Show GN(계정이 1주일 이상일 때만), 한국 개발 커뮤니티, Threads, Qiita·Zenn, V2EX. 여기서 나온 초기 스타가 GitHub Trending의 바탕 |
+| 10/26(월) | 22:00 KST Show HN (미국 동부 오전 9시, 13:00 UTC). 본문·댓글은 사람이 직접 씀. 이후 6시간 모든 댓글에 답변. Reddit은 조건을 충족한 r/ClaudeAI 등에만 1시간 간격 |
 | 10/27~29 | 반론 대응 핫픽스 공개, 벤치마크 글·기술 글로 HN 일반 게시 재도전 |
 | 10/30~31 | 뉴스레터·리스트 반영분 공유, 회고 글, 최종 측정 |
 
@@ -16,16 +17,22 @@
 - 하루 스타 증가가 20 미만인 날이 이틀 이어지면: 채널 대신 메시지 문제로 보고 헤드라인 A/B(병렬 vs 세션 유지 vs 원격 지휘)를 바꾼다.
 - Day 4 회고에서 대기 명단 20명 이상이면 Pro 결제 오픈을 검토한다.
 
+## Phase 0를 줄인 이유
+
+GTM.md의 Phase 0(2~4주: 벤치마크, 데모, 가이드)는 원래 런칭 전 단계다. 이번에는 7일 대회 기간이라 줄였다. 카피 정리(반론 #10)만 Show HN 전에 끝내고, 벤치마크(반론 #11)와 세션 유지 측정(반론 #1)은 10/27~29 재도전 글의 소재로 옮긴다.
+
 ## 기대치 (경험적 추정, 검증 전)
 
 - 7일 스타: 300~2,000. 10,000은 1% 미만.
+- 참고: HN에 올라간 AI 레포 138개의 평균 증가는 24시간 +121, 7일 +289 스타였다. 다만 표본 평균 시작점이 스타 1,247개라 팔로워 0인 경우와는 다르고, 중앙값은 훨씬 낮다 ([arXiv 2511.04453](https://arxiv.org/abs/2511.04453)).
 - 게시물에서는 "open source" 대신 "source-available"이라고 쓴다 (라이선스가 OSI 승인이 아님).
 
 ## 뺀 것
 
 - Product Hunt: 팔로워 없는 런칭은 효과가 작다고 판단. 7일 뒤로 미룸.
 - HN 재게시 요청, 투표 요청: 규칙 위반 위험.
-- Lobsters 직접 게시: 신규 계정은 일정 기간 자기 프로젝트를 올릴 수 없음. 이번 주는 댓글 참여만.
+- Lobsters 직접 게시: 신규 계정은 70일간 자기 홍보 불가 ([about](https://lobste.rs/about)). 이번 주는 댓글 참여만.
+- r/opensource, r/commandline: 라이선스·AI 프로젝트 규칙상 불가.
 
 ## 7일 이후: 90일 계획 (2026-11 ~ 2027-01)
 

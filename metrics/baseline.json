@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-24T08:07:58.118Z",
+  "capturedAt": "2026-10-24T08:14:01.140Z",
   "repo": "Indosaram/ferryx",
   "stars": 17,
   "forks": 4,
@@ -19,10 +19,10 @@
       "uniques": 3
     }
   ],
-  "releaseDownloadsTotal": 2692,
+  "installerDownloadsTotal": 393,
   "manual": {
-    "discordMembers": null,
-    "waitlist": null,
+    "discordMembers": 2,
+    "waitlist": 0,
     "externalPosts": []
   }
 }
