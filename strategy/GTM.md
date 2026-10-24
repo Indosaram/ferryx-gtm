@@ -138,11 +138,23 @@
 - **가치 기준 전환:** "머신 수" → **"회사 업무용 사용 권리 + 좌석 + 관리·보안 기능"**. 머신 수는 Pro의 보조 기준으로만 남긴다.
 - 앱 안 `PlanSection`과 결제 코드는 아직 Pro $5/Team $7 시절 구조 그대로다. 결제를 열 때 Team 최소 좌석(2→3)과 가격 ID를 함께 바꿔야 한다.
 
+### 4-5. 외부 벤치마크로 다시 본 결정 (2026-10-24 조사)
+
+**가격 위치.** 비슷한 개발자 도구의 개인 유료 플랜은 $10~20, 팀 플랜은 좌석당 $15~60이다: [Termius](https://termius.com/pricing) Pro $10 / Team $20, [Raycast](https://www.raycast.com/pricing) Pro $10 / Team $15, [Tailscale](https://tailscale.com/pricing) Standard $8, [Docker](https://www.docker.com/pricing/) Team $16, [Warp](https://www.warp.dev/pricing) Business $50, [Conductor](https://www.conductor.build/pricing)·[cmux](https://cmux.com/pricing) Team $60. Pro $8, Team $12(정가 $16)는 이 범위의 맨 아래에 있다. 클라우드 VM 같은 원가 큰 기능이 없으니 이 위치가 맞다. 대신 "싸다"를 메시지로 쓰지 않고 "내 머신에서 돈다"를 메시지로 쓴다.
+
+**회사 규모 기준의 선례.** [Docker 구독 약관](https://www.docker.com/legal/docker-subscription-service-agreement/)은 직원 250명 미만이면서 매출 $10M 미만이면 무료다. [PolyForm Small Business](https://github.com/polyformproject/polyform-licenses/blob/76a278c402bc43b8d2b561da140b0f3e17263015/PolyForm-Small-Business-1.0.0.md#L35-L37)는 100명 미만이면서 $1M 미만이다. Ferryx의 50명/$5M은 그 사이로, 업계 선례에서 벗어나지 않는다.
+
+**라이선스 변경 반발의 교훈.** 큰 반발은 OSI 라이선스로 커뮤니티가 커진 뒤에 바꾼 경우에 나왔다: HashiCorp의 BSL 전환은 [HN 632점·댓글 731개](https://news.ycombinator.com/item?id=37081306)를 받고 OpenTofu 포크로 이어졌고, Redis는 [Valkey 포크](https://www.linuxfoundation.org/press/linux-foundation-launches-open-source-valkey-community)를 겪었다. 처음부터 fair-code였던 n8n은 [반응이 거의 없었다](https://news.ycombinator.com/item?id=30723477). Ferryx는 스타 17개 단계에서 바꿨고 이전 라이선스(SUL)도 OSI가 아니었으므로 위험은 낮다고 본다(추정). 다만 9/14 MIT → SUL 전환 이력이 있으므로, 공지 글에서 "다시 바꾸지 않는다"는 약속과 이전 버전 권리 유지를 분명히 한다.
+
+**결제 대행사(MoR) 재검토.** 현재 결제 코드는 Lemon Squeezy 기준인데, Lemon Squeezy는 [2026-01 공지](https://www.lemonsqueezy.com/blog/2026-update)에서 지원·업데이트가 느려졌다고 인정하고 Stripe Managed Payments로의 이전을 예고했다. 그런데 [Stripe Managed Payments는 한국 사업자를 지원하지 않는다](https://docs.stripe.com/payments/managed-payments/eligibility). 그래서 결제를 열 때는 [Paddle](https://www.paddle.com/pricing)(5% + 50¢)이나 [Polar](https://polar.sh/resources/pricing)(5% + 50¢, 월 $20 플랜부터 3.8% + 40¢, 한국 정산 지원)를 우선 검토한다. 결제 연동부는 대행사를 바꿀 수 있게 어댑터 경계를 유지한다.
+
+**전환율 기준.** 셀프 서브 프리미엄 모델의 Free → 유료 전환율은 3~5%가 양호, 6~8%가 우수다([Lenny's Newsletter, 2023](https://www.lennysnewsletter.com/p/what-is-a-good-free-to-paid-conversion), B2B SaaS 1,000여 개 기준). 8장의 Pro 전환 목표 3~5%는 이 기준을 따른다. 개발자 터미널 도구만의 공개 수치는 찾지 못했다.
+
 ### 4-4. 전환 실행 순서
 1. ~~가격표 개편, 라이선스 교체, CLA 도입~~ (2026-10-24 완료, 머지 대기)
 2. 변경 공지 글 게시. 가능하면 변호사 검토와 과거 외부 기여자 동의도 받는다
 3. CLA 워크플로 활성화 (서명 저장소·시크릿 생성)
-4. **[보류] 결제 오픈.** 열 때는 Pro부터. 결제 흐름을 검증하고 첫 매출을 만든다.
+4. **[보류] 결제 오픈.** 열 때는 Pro부터. 결제 대행사는 Paddle 또는 Polar로 재선정한다(4-5). 결제 흐름을 검증하고 첫 매출을 만든다.
 5. Team 최소 관리 기능(멤버 초대·제거, 좌석 관리) 출시
 6. Team 판매 시작과 함께 **90일 유예** 시작(라이선스에 이미 들어 있음). 기존 사용자와 얼리 서포터는 첫해 50% 할인
 7. Business는 대기 명단 → 디자인 파트너 → SSO, 감사 로그, 정책 엔진 순으로 출시하면서 가격 공개
