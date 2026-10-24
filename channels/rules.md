@@ -24,7 +24,7 @@
 | [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) | 14일 이상 꾸준한 커밋 또는 스타 100+, 이슈 폼으로만, 사람이 작성 ([CONTRIBUTING](https://github.com/hesreallyhim/awesome-claude-code/blob/15a8bf8626eaa14ad52ff118e53ace29a4cca244/CONTRIBUTING.md)) | 커밋 이력 충족 → 10/24 제출 |
 | [Terminal Trove](https://terminaltrove.com/post/) | 미리보기 이미지·GIF 필요, 비공개 라이선스도 가능 (사이트가 자동 접근을 403으로 막아 [2026-07 아카이브 사본](http://web.archive.org/web/20260713020823/https://terminaltrove.com/post/)으로 확인) | 10/24 제출 |
 | [Console.dev](https://console.dev/selection-criteria) | 개발자용, 셀프 가입, 문서 양호. 이메일 제출 | 10/24 제출 |
-| [Changelog News](https://changelog.com/news/submit) | 자기 작업 제출 환영, 상용 제품은 제외 | 무료 사용 중심으로 제출 |
+| [Changelog News](https://changelog.com/news/submit) | 자기 작업 제출 환영, 상용 제품은 제외 | 해당 없음 (유료 가격이 공개된 상용 제품). 벤치마크 방법론 같은 기술 글이 생기면 그 글만 제출 검토 |
 | awesome-cli-apps | 자유/오픈소스 라이선스 필수 ([contributing](https://github.com/agarrharr/awesome-cli-apps/blob/1f85964177eefd08469005b0c47d09c7c729cfd6/contributing.md)) | 해당 없음 |
 | awesome-tuis | 레포 6개월 이상 | 해당 없음 (TUI도 아님) |
 

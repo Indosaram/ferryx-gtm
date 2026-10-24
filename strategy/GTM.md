@@ -16,7 +16,7 @@
 **핵심 메시지 3개**
 1. **병렬로, 충돌 없이** — 에이전트마다 자동 Git 워크트리 ✅, 분할 창 ✅, 실시간 상태 ✅
 2. **꺼지지 않는 세션** — 데몬이 세션을 소유해 GUI를 닫아도 프로세스가 계속 돈다 ✅ (데몬 중지·재부팅 시 종료. 과거 업데이트 중 유실 사례가 있어 측정 공개 전까지 보장 표현 금지 — objections #1)
-3. **어디서든 지휘** — 휴대폰 PIN 페어링·계정 기반 연결 ✅, SSH·포트 개방 없는 리눅스 서버 연결 ✅
+3. **어디서든 지휘** — 휴대폰 6자리 PIN 페어링 ✅, SSH·포트 개방 없는 리눅스 서버 연결 ✅
 
 **보조 메시지(가설, 미측정):** "Zero bloat" — Electron 없음, GPU 렌더링. 경쟁 제품 대비 메모리 우위는 아직 측정하지 않았다. 재현 가능한 벤치마크(objections #11)를 공개하기 전에는 경쟁사 수치를 게시물에 쓰지 않는다.
 
@@ -61,8 +61,8 @@
 | [Vibe Kanban](https://www.vibekanban.com/blog) | 칸반 + 워크트리 | 회사 종료(2026-04), 커뮤니티 유지 | Apache-2.0 | 28,442 | 낮음: 이탈 사용자 흡수 기회 |
 | [Superset](https://superset.sh/pricing) | Electron, 100+ 에이전트, SOC 2 | $0 / Pro $20 / Team $60 | ELv2 | 15,506 | 높음: 팀·보안 구매자 |
 | [Conductor](https://www.conductor.build/pricing) | macOS, 클라우드 VM, 멀티플레이어 | $0 / Pro $50 / Teams $60 | 비공개 | — | 높음: 상용 선두 |
-| Claude Code 자체 | `--worktree`, [Remote Control](https://code.claude.com/docs/en/remote-control), 클라우드 세션 | 구독 포함 | 비공개 | — | 매우 높음 |
-| Codex (ChatGPT 앱) | [워크트리](https://developers.openai.com/codex/app/worktrees.md), 모바일 승인 | 구독 포함 | 비공개 | — | 매우 높음 |
+| Claude Code 자체 | [`--worktree`](https://code.claude.com/docs/en/common-workflows), [Remote Control](https://code.claude.com/docs/en/remote-control), [클라우드 세션](https://code.claude.com/docs/en/claude-code-on-the-web) | 구독 포함 | 비공개 | — | 매우 높음 |
+| Codex (ChatGPT 앱) | [워크트리](https://developers.openai.com/codex/app/worktrees.md), [모바일에서 시작·승인](https://developers.openai.com/codex/app.md) | 구독 포함 | 비공개 | — | 매우 높음 |
 
 **결론**
 - 워크트리, 휴대폰 제어, 세션 유지는 이제 기본 사양이다. 이것만으로는 차별화되지 않는다.
@@ -134,6 +134,18 @@
 - **Business에 가격을 붙이지 않는 이유:** 핵심 기능이 전부 🔮다. 대기 명단으로 실제 수요와 지불 의사를 먼저 잰다.
 - **가치 기준 전환:** "머신 수" → **"회사 업무용 사용 권리 + 좌석 + 관리·보안 기능"**. 머신 수는 Pro의 보조 기준으로만 남긴다.
 
+### 4-4. 전환 실행 순서
+1. ~~가격표 개편, 라이선스 교체, CLA 도입~~ (2026-10-24 완료, main 반영)
+2. 변경 공지 글 게시. 법률 검토와 과거 외부 기여자 동의를 받는다
+3. CLA 워크플로 활성화 (서명 저장소·시크릿 생성)
+4. **[보류] 결제 오픈.** 열 때는 Pro부터. 결제 대행사는 Paddle 또는 Polar로 재선정한다(4-5). 결제 흐름을 검증하고 첫 매출을 만든다.
+5. Team 최소 관리 기능(멤버 초대·제거, 좌석 관리) 출시
+6. Team 판매 시작과 함께 **90일 유예** 시작(라이선스에 이미 들어 있음). 기존 사용자와 얼리 서포터는 첫해 50% 할인
+7. Business는 대기 명단 → 디자인 파트너 → SSO, 감사 로그, 정책 엔진 순으로 출시하면서 가격 공개
+
+**과금 원칙:** 로컬 기능은 개인에게 절대 잠그지 않는다. 자체 호스팅 릴레이는 누구에게나 무료다. 과금 대상은 "큰 회사의 업무용 사용"과 "팀 관리·보안 기능"이다.
+
+
 ### 4-5. 외부 벤치마크로 다시 본 결정 (2026-10-24 조사)
 
 **가격 위치.** 비슷한 개발자 도구의 개인 유료 플랜은 $10~20, 팀 플랜은 좌석당 $15~60이다: [Termius](https://termius.com/pricing) Pro $10 / Team $20, [Raycast](https://www.raycast.com/pricing) Pro $10 / Team $15, [Tailscale](https://tailscale.com/pricing) Standard $8, [Docker](https://www.docker.com/pricing/) Team $16, [Warp](https://www.warp.dev/pricing) Business $50, [Conductor](https://www.conductor.build/pricing)·[cmux](https://cmux.com/pricing) Team $60. Pro $8, Team $12(정가 $16)는 이 범위의 맨 아래에 있다. 클라우드 VM 같은 원가 큰 기능이 없으니 이 위치가 맞다. 대신 "싸다"를 메시지로 쓰지 않고 "내 머신에서 돈다"를 메시지로 쓴다.
@@ -146,17 +158,6 @@
 
 **전환율 기준.** 셀프 서브 프리미엄 모델의 Free → 유료 전환율은 3~5%가 양호, 6~8%가 우수다([Lenny's Newsletter, 2023](https://www.lennysnewsletter.com/p/what-is-a-good-free-to-paid-conversion), B2B SaaS 1,000여 개 기준). 8장의 Pro 전환 목표 3~5%는 이 기준을 따른다. 개발자 터미널 도구만의 공개 수치는 찾지 못했다.
 
-### 4-4. 전환 실행 순서
-1. ~~가격표 개편, 라이선스 교체, CLA 도입~~ (2026-10-24 완료, main 반영)
-2. 변경 공지 글 게시. 법률 검토와 과거 외부 기여자 동의를 받는다
-3. CLA 워크플로 활성화 (서명 저장소·시크릿 생성)
-4. **[보류] 결제 오픈.** 열 때는 Pro부터. 결제 대행사는 Paddle 또는 Polar로 재선정한다(4-5). 결제 흐름을 검증하고 첫 매출을 만든다.
-5. Team 최소 관리 기능(멤버 초대·제거, 좌석 관리) 출시
-6. Team 판매 시작과 함께 **90일 유예** 시작(라이선스에 이미 들어 있음). 기존 사용자와 얼리 서포터는 첫해 50% 할인
-7. Business는 대기 명단 → 디자인 파트너 → SSO, 감사 로그, 정책 엔진 순으로 출시하면서 가격 공개
-
-**과금 원칙:** 로컬 기능은 개인에게 절대 잠그지 않는다. 자체 호스팅 릴레이는 누구에게나 무료다. 과금 대상은 "큰 회사의 업무용 사용"과 "팀 관리·보안 기능"이다.
-
 ---
 
 ## 5. 제품 로드맵 (마케팅·세일즈용)
@@ -165,7 +166,7 @@
 
 | 스토리 | 근거 기능 |
 |---|---|
-| "에이전트 8개, 브랜치 충돌 0" | 에이전트별 자동 워크트리, 경로 탈출 방지 |
+| "에이전트마다 워크트리, 브랜치 충돌 방지" | 에이전트별 자동 워크트리, 경로 탈출 방지 |
 | "노트북을 덮어도 에이전트는 계속 일한다" | 데몬 세션 소유, 재접속 시 출력 재생, 무중단 데몬 교체 |
 | "지하철에서 승인 버튼 누르기" | 모바일 PIN 페어링, 원격 웹 클라이언트 |
 | "포트 하나 안 열고 GPU 서버 지휘" | `ferryx-cli` + 릴레이 + QUIC 직접 연결 |
@@ -209,7 +210,7 @@
 - **계측:** 설치 → 첫 에이전트 실행 → 첫 워크트리 → 첫 원격 페어링 퍼널 (옵트인, 익명)
 
 ### Phase 1 — 커뮤니티 런칭 (1~3개월) · 목표: 개인 사용자 확보
-- **Show HN** ("Native, non-Electron workspace for running 8 coding agents in parallel"), 조건을 충족한 서브레딧(r/ClaudeAI 등). Product Hunt는 팔로워가 생긴 뒤로 미룬다 (launch-7day.md)
+- **Show HN** (제목은 skills/channel-post.md 기준), 조건을 충족한 서브레딧(r/ClaudeAI 등). Product Hunt는 팔로워가 생긴 뒤로 미룬다 (launch-7day.md)
 - **에이전트 생태계 편승:** Claude Code·Codex 사용 팁 콘텐츠에 Ferryx를 자연스럽게 노출. "Claude Code 병렬 실행 가이드" 같은 검색 유입형 글
 - **한국 시장 동시 공략:** Threads·GeekNews·디스코드 커뮤니티. 개발자 본인이 직접 빌드 과정을 공유하는 build-in-public
 - **크리에이터:** AI 코딩 유튜버/스트리머에게 연락. 결제 오픈 시 Pro 1년 무료 코드를 약속(현재 Pro 판매 전)
@@ -286,7 +287,7 @@
 2. 30초 데모 영상 + 랜딩 페이지 메시지 교체
 3. 공개 로드맵 페이지 (Now/Next/Later, 🔮 표기)
 4. 헤드리스 서버 가이드 + 프라이버시 페이지
-5. Show HN·Product Hunt·GeekNews 런칭 일정 확정
+5. Show HN·GeekNews 일정 확정 (Product Hunt는 팔로워 확보 후)
 6. Pro 대기자 명단 + Early Supporter 가격 공개
 
 ---

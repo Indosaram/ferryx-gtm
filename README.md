@@ -17,11 +17,11 @@
 | 설치 파일 누적 다운로드 (자동 업데이트용 latest.json·서명·체크섬 제외) | 393 | +600 | +2,000 |
 | Discord 멤버 | 2 | 50 | 150 |
 | Pro/Team 대기 명단 (매출 선행지표) | 0 | 40 | 100 |
-
-대기 명단은 [이슈 #1](https://github.com/Indosaram/ferryx-gtm/issues/1)의 댓글·👍 수로 센다. 매일 measure 단계에서 `metrics/day-N.json`의 `manual.waitlist`에 기록한다.
 | 외부 게시물·언급 (HN/Reddit/GeekNews/뉴스레터) | 0 | 10 | 25 |
 
-**매출에 대해 솔직하게:** 유료 플랜은 아직 판매 전입니다(가격만 공개: Pro $8/월, Team 출시가 $12/좌석/월). 그래서 7일 매출 목표는 $0이고, 대신 **대기 명단 가입**을 매출 선행지표로 씁니다. 결제를 이번 주에 열지 여부는 Day 4 회고에서 대기 명단 수치를 보고 결정합니다([strategy/GTM.md](strategy/GTM.md) 4장).
+대기 명단은 [이슈 #1](https://github.com/Indosaram/ferryx-gtm/issues/1)에 댓글이나 👍를 남긴 고유 사용자 수로 센다(메인테이너 제외). 매일 measure 단계에서 `metrics/day-N.json`의 `manual.waitlist`에 기록한다.
+
+**매출에 대해 솔직하게:** 유료 플랜은 아직 판매 전입니다(가격만 공개: Pro $8/월, Team 출시가 $12/좌석/월). 그래서 7일 매출 목표는 $0이고, 대신 **대기 명단 가입**을 매출 선행지표로 씁니다. Day 4에 대기 명단이 20명을 넘으면 결제 대행사(Paddle 또는 Polar) 가입 심사를 시작하고, 결제 자체는 12월에 엽니다([strategy/GTM.md](strategy/GTM.md) 4장, [launch-7day.md](strategy/launch-7day.md)).
 
 ## 루프 한 장 요약
 
@@ -64,7 +64,7 @@
 
 ## 사람과 에이전트의 역할 분리
 
-Hacker News는 LLM으로 쓴 게시글·댓글을 금지하고, r/LocalLLaMA·r/programming·r/opensource도 AI 생성 글을 막는다(channels/rules.md). 그래서 **게시글과 댓글은 사람이 직접 쓰고**, 에이전트는 측정, 반응 수집, 사실 확인, 반론 대응(코드·문서 수정)만 맡는다. 이 분리 자체가 루프 설계의 일부다.
+Hacker News는 LLM으로 쓴 게시글·댓글을 금지하고, r/LocalLLaMA·r/rust도 AI 생성·LLM 글을 막는다(channels/rules.md). 그래서 **게시글과 댓글은 사람이 직접 쓰고**, 에이전트는 측정, 반응 수집, 사실 확인, 반론 대응(코드·문서 수정)만 맡는다. 이 분리 자체가 루프 설계의 일부다.
 
 ## 평가 기준과의 대응
 
