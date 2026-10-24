@@ -1,76 +1,80 @@
 # Ferryx GTM Agentic Loop
 
-> Clone Loop Day in Seoul 제출 레포 · 운영 기간 2026-10-24(토) ~ 2026-10-31(토) 18:00 KST
+> Submission repo for Clone Loop Day in Seoul · Run period 2026-10-24 (Sat) to 2026-10-31 (Sat) 18:00 KST
 
-[Ferryx](https://github.com/Indosaram/ferryx)는 Claude Code·Codex 같은 CLI 코딩 에이전트 여러 개를 한 화면에서 병렬로 돌리는 네이티브 데스크톱 작업 공간입니다. 에이전트마다 Git 워크트리를 따로 쓰고, 데몬이 세션을 붙잡아 두며, 휴대폰이나 원격 리눅스 서버에서도 지휘할 수 있습니다. Electron은 쓰지 않습니다.
+[Ferryx](https://github.com/Indosaram/ferryx) is a native desktop workspace for running multiple CLI coding agents, such as Claude Code and Codex, in parallel on one screen. Each agent gets its own Git worktree, a daemon keeps sessions alive, and you can direct agents from your phone or a remote Linux server. It does not use Electron.
 
-이 레포는 실행 프로그램이 아니라, 7일 동안 **직접 반복 운영하는 GTM 루프의 방법론**(Markdown 스킬 + 지표 수집 스크립트 + 일일 로그)입니다.
+This repo is not a program you run. It is the **methodology of a GTM loop that we run by hand, repeatedly, for 7 days**: Markdown skills, a metrics collection script and daily logs.
 
-## 7일 목표 (2026-10-31 18:00 KST 기준)
+## 7-day goals (as of 2026-10-31 18:00 KST)
 
-기준선은 2026-10-24 17:07 KST에 `gh api`로 측정했습니다([metrics/baseline.json](metrics/baseline.json)).
+The baseline was measured with `gh api` at 2026-10-24 17:07 KST ([metrics/baseline.json](metrics/baseline.json)).
 
-| 지표 | 기준선 (10/24) | 목표 | 스트레치 |
+| Metric | Baseline (10/24) | Goal | Stretch |
 |---|---|---|---|
-| GitHub 스타 | 17 | **300** | 1,000 |
-| GitHub 14일 순방문자 (traffic uniques) | 11 | 1,500 | 5,000 |
-| 설치 파일 누적 다운로드 (자동 업데이트용 latest.json·서명·체크섬 제외) | 393 | +600 | +2,000 |
-| Discord 멤버 | 2 | 50 | 150 |
-| Pro/Team 대기 명단 (매출 선행지표) | 0 | 40 | 100 |
-| 외부 게시물·언급 (HN/Reddit/GeekNews/뉴스레터) | 0 | 10 | 25 |
+| GitHub stars | 17 | **300** | 1,000 |
+| GitHub 14-day unique visitors (traffic uniques) | 11 | 1,500 | 5,000 |
+| Cumulative installer downloads (excluding auto-update latest.json, signatures and checksums) | 393 | +600 | +2,000 |
+| Discord members | 2 | 50 | 150 |
+| Pro/Team waitlist (leading indicator for revenue) | 0 | 40 | 100 |
+| External posts and mentions (HN/Reddit/GeekNews/newsletters) | 0 | 10 | 25 |
 
-대기 명단은 [이슈 #1](https://github.com/Indosaram/ferryx-gtm/issues/1)에 댓글이나 👍를 남긴 고유 사용자 수로 센다(메인테이너 제외). 매일 measure 단계에서 `metrics/day-N.json`의 `manual.waitlist`에 기록한다.
+The waitlist counts unique users who left a comment or 👍 on [issue #1](https://github.com/Indosaram/ferryx-gtm/issues/1) (maintainer excluded). Each day's measure step records it in `manual.waitlist` of `metrics/day-N.json`.
 
-**매출에 대해 솔직하게:** 유료 플랜은 아직 판매 전입니다(가격만 공개: Pro $8/월, Team 출시가 $12/좌석/월). 그래서 7일 매출 목표는 $0이고, 대신 **대기 명단 가입**을 매출 선행지표로 씁니다. Day 4에 대기 명단이 20명을 넘으면 결제 대행사(Paddle 또는 Polar) 가입 심사를 시작하고, 결제 자체는 12월에 엽니다([strategy/GTM.md](strategy/GTM.md) 4장, [launch-7day.md](strategy/launch-7day.md)).
+**Being honest about revenue:** paid plans are not on sale yet (only pricing is public: Pro $8/month, Team launch price $12/seat/month). So the 7-day revenue goal is $0, and **waitlist signups** serve as the leading indicator for revenue instead. If the waitlist passes 20 by Day 4, we start the application review with a payment provider (Paddle or Polar); payments themselves open in December ([strategy/GTM.md](strategy/GTM.md) chapter 4, [launch-7day.md](strategy/launch-7day.md)).
 
-## 루프 한 장 요약
+## The loop on one page
 
 ```
- ┌─ 1. MEASURE ── 지표 스냅샷 (scripts/snapshot.ts) ──────────────┐
+ ┌─ 1. MEASURE ── metrics snapshot (scripts/snapshot.ts) ─────────┐
  │                                                                 │
- │  2. LISTEN ── 어제 게시물 댓글·이슈·"안 쓰는 이유" 수집         │
+ │  2. LISTEN ── collect comments on yesterday's posts, issues,    │
+ │     and "reasons not to use it"                                 │
  │                                                                 │
- │  3. OBJECTION → FIX → STORY  (이 루프의 핵심)                   │
- │     가장 많이 나온 반대 이유 1개 → 제품/문서 수정 → 그 수정을   │
- │     다음 게시물의 소재로 사용                                    │
+ │  3. OBJECTION → FIX → STORY  (the core of this loop)            │
+ │     top objection → fix product/docs → use that fix as the      │
+ │     material for the next post                                  │
  │                                                                 │
- │  4. SHIP CONTENT ── 채널별 규칙에 맞는 게시 1~3건               │
- │     (에이전트는 사실 확인·소재 정리, 본문은 사람이 직접 씀)     │
+ │  4. SHIP CONTENT ── 1-3 posts that follow each channel's rules  │
+ │     (agents check facts and gather material; a human writes     │
+ │     the text)                                                   │
  │                                                                 │
- │  5. REPLY ── 게시 후 6시간 모든 댓글에 사람이 답변              │
+ │  5. REPLY ── a human answers every comment for 6 hours after    │
+ │     posting                                                     │
  │                                                                 │
- └─ 6. RETRO ── log/day-N.md 기록, 다음 날 가설·채널 조정 ─────────┘
+ └─ 6. RETRO ── write log/day-N.md, adjust next day's hypotheses ──┘
+              and channels
 ```
 
-### 이 루프가 다른 점
+### What makes this loop different
 
-1. **제품이 곧 루프의 실행 환경이다 (dogfooding loop).** 루프의 에이전트들(채널 리서치, 사실 확인, 반론 검토, 지표 분석)을 Ferryx 안에서 패널별·워크트리별로 병렬 실행합니다. 루프를 돌리는 화면 녹화가 그대로 데모 영상과 게시물 소재가 됩니다. "에이전트로 홍보하는 에이전트 도구"를 그 도구 자체로 증명합니다.
-2. **반대 이유를 연료로 쓴다 (objection-driven loop).** 출시 전에 회의적 사용자 관점의 "Ferryx를 쓰지 않을 이유" 11가지를 먼저 작성했습니다(세션 유실 이력, 비 OSI 라이선스, 벤더 기능 흡수 등). 매일 가장 큰 반대 이유 하나를 실제로 고치거나 정직하게 인정하고, 그 과정을 콘텐츠로 냅니다. 개발자 커뮤니티는 과장보다 정직한 한계 공개에 반응한다는 가설을 검증합니다.
-3. **팔로워 0 전제.** 기존 영향력이 없으므로 알고리즘 채널(HN 첫 페이지, Reddit, GeekNews, GitHub Trending)과 남의 채널(뉴스레터, awesome 리스트, 크리에이터)만 씁니다. 각 채널의 게시 규칙(계정 나이, 자기 홍보 비율, Lobsters 초대제 등)을 스킬에 명시해 규칙 위반으로 계정을 잃지 않게 합니다.
+1. **The product is the loop's runtime (dogfooding loop).** The loop's agents (channel research, fact checking, objection review, metrics analysis) run in parallel inside Ferryx, one per panel and worktree. Screen recordings of the loop running become demo videos and post material as-is. "An agent tool promoted by agents" is proven with the tool itself.
+2. **Objections are the fuel (objection-driven loop).** Before launch, we wrote 11 "reasons not to use Ferryx" from a skeptical user's point of view (history of lost sessions, non-OSI license, vendors absorbing the feature, and so on). Each day we actually fix, or honestly acknowledge, the biggest objection, and publish that process as content. This tests the hypothesis that developer communities respond to honest disclosure of limits more than to hype.
+3. **Assumes zero followers.** With no existing reach, we use only algorithmic channels (HN front page, Reddit, GeekNews, GitHub Trending) and other people's channels (newsletters, awesome lists, creators). Each channel's posting rules (account age, self-promotion ratio, Lobsters invite-only, etc.) are spelled out in the skills so we don't lose accounts to rule violations.
 
-## 레포 구조
+## Repo structure
 
-| 경로 | 내용 |
+| Path | Contents |
 |---|---|
-| [strategy/GTM.md](strategy/GTM.md) | 전체 GTM 전략: 포지셔닝, 타겟, 경쟁, 가격·라이선스, 로드맵, 단계별 계획, 리스크 |
-| [strategy/launch-7day.md](strategy/launch-7day.md) | 이번 7일 일정과 중간 판단 규칙 |
-| [strategy/objections.md](strategy/objections.md) | "쓰지 않을 이유" 목록과 대응 상태 (루프가 매일 갱신) |
-| [loop/LOOP.md](loop/LOOP.md) | 하루 루프 운영 절차 (에이전트가 읽고 실행하는 마스터 스킬) |
-| [skills/](skills/) | 단계별 스킬: measure, listen, objection-fix, channel-post, reply, retro |
-| [channels/rules.md](channels/rules.md) | 채널별 게시 규칙과 금지 사항 |
-| [scripts/snapshot.ts](scripts/snapshot.ts) | GitHub 지표 스냅샷 (`bun scripts/snapshot.ts`) |
-| [metrics/](metrics/) | 기준선과 일일 스냅샷 |
-| [log/](log/) | 일일 운영 로그와 회고 |
+| [strategy/GTM.md](strategy/GTM.md) | Full GTM strategy: positioning, target, competition, pricing and licensing, roadmap, phased plan, risks |
+| [strategy/launch-7day.md](strategy/launch-7day.md) | This 7-day schedule and mid-course decision rules |
+| [strategy/objections.md](strategy/objections.md) | The "reasons not to use it" list and response status (updated daily by the loop) |
+| [loop/LOOP.md](loop/LOOP.md) | Daily loop procedure (the master skill agents read and execute) |
+| [skills/](skills/) | Per-step skills: measure, listen, objection-fix, channel-post, reply, retro |
+| [channels/rules.md](channels/rules.md) | Posting rules and prohibitions per channel |
+| [scripts/snapshot.ts](scripts/snapshot.ts) | GitHub metrics snapshot (`bun scripts/snapshot.ts`) |
+| [metrics/](metrics/) | Baseline and daily snapshots |
+| [log/](log/) | Daily operation logs and retros |
 
-## 사람과 에이전트의 역할 분리
+## Division of roles between humans and agents
 
-Hacker News는 LLM으로 쓴 게시글·댓글을 금지하고, r/LocalLLaMA·r/rust도 AI 생성·LLM 글을 막는다(channels/rules.md). 그래서 **게시글과 댓글은 사람이 직접 쓰고**, 에이전트는 측정, 반응 수집, 사실 확인, 반론 대응(코드·문서 수정)만 맡는다. 이 분리 자체가 루프 설계의 일부다.
+Hacker News bans posts and comments written with LLMs, and r/LocalLLaMA and r/rust also block AI-generated/LLM posts (channels/rules.md). So **a human writes posts and comments directly**, and agents handle only measurement, collecting reactions, fact checking and responding to objections (code and doc fixes). This separation is itself part of the loop design.
 
-## 평가 기준과의 대응
+## Mapping to the judging criteria
 
-| 심사 기준 | 이 레포에서 확인할 곳 |
+| Judging criterion | Where to check in this repo |
 |---|---|
-| 제품·고객에 맞는 전략인가 | strategy/GTM.md 1~3장, channels/rules.md |
-| 실제 반복 운영했는가 | log/day-*.md, metrics/*.json (매일 커밋) |
-| 중간 결과로 루프가 개선됐는가 | 각 log의 "루프 변경" 섹션, loop/CHANGELOG.md |
-| 목표 대비 성과 | 위 목표 표 ↔ metrics/day-7.json |
+| Is the strategy right for the product and customers? | strategy/GTM.md chapters 1-3, channels/rules.md |
+| Was it actually run repeatedly? | log/day-*.md, metrics/*.json (committed daily) |
+| Did interim results improve the loop? | The "Loop changes" section of each log, loop/CHANGELOG.md |
+| Results against goals | Goals table above ↔ metrics/day-7.json |

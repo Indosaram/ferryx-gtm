@@ -1,37 +1,37 @@
-# Day 0 — 2026-10-24 (토)
+# Day 0 — 2026-10-24 (Sat)
 
-## 지표 (17:07 KST, 기준선)
+## Metrics (17:07 KST, baseline)
 
-| 지표 | 값 |
+| Metric | Value |
 |---|---|
-| 스타 | 17 |
-| 포크 | 4 |
-| 14일 조회 / 순방문자 | 22 / 11 |
-| 14일 클론 / 순클론 | 1,741 / 319 |
-| 설치 파일 누적 다운로드 (latest.json 2,199 + 서명·체크섬 100 제외) | 393 |
-| 릴리스 전체 다운로드 (자동 업데이트 확인 포함) | 2,692 |
-| Discord 멤버 | 2 |
-| 대기 명단 (이슈 #1) | 0 |
+| Stars | 17 |
+| Forks | 4 |
+| 14-day views / unique visitors | 22 / 11 |
+| 14-day clones / unique cloners | 1,741 / 319 |
+| Cumulative installer downloads (excluding latest.json 2,199 + signatures/checksums 100) | 393 |
+| Total release downloads (including auto-update checks) | 2,692 |
+| Discord members | 2 |
+| Waitlist (issue #1) | 0 |
 | referrer | github.com 3 |
 
-해석: 클론·다운로드에 비해 레포 페이지 방문이 매우 적다. 유입 채널이 사실상 없다는 뜻이다(외부 언급 0).
+Interpretation: repo page visits are very low compared with clones and downloads. This means there are effectively no inbound channels (0 external mentions).
 
-## 한 일
+## What we did
 
-- GTM 전략 확정 (strategy/GTM.md), 라이선스·가격 정리
-- "쓰지 않을 이유" 11개 작성 (strategy/objections.md)
-- 17:08 루프 v1 설계와 이 레포 공개 (커밋 e1a59ba)
-- 17:20 적대적 리뷰 1차: 차단 이슈 9건 → 같은 날 반영 (다운로드 지표에서 자동 업데이트 제외, 대기 명단 이슈 #1 개설, 게시글은 사람이 직접 쓰도록 역할 분리, 미측정 경쟁 수치 삭제, Show HN 전 카피 수정 필수화)
-- 채널 규칙을 공식 페이지로 확인 (channels/rules.md)
+- Finalized GTM strategy (strategy/GTM.md), sorted out licensing and pricing
+- Wrote 11 "reasons not to use it" (strategy/objections.md)
+- 17:08 Designed loop v1 and published this repo (commit e1a59ba)
+- 17:20 First adversarial review: 9 blocking issues → addressed the same day (excluded auto-updates from the download metric, opened waitlist issue #1, split roles so humans write posts personally, removed unmeasured competitor numbers, made copy fixes mandatory before Show HN)
+- Verified channel rules against official pages (channels/rules.md)
 
-## 10/24에 남은 일 (10/25로 이월, 이유: 루프 설계·검토에 시간 사용)
+## Left over from 10/24 (carried to 10/25; reason: time spent on loop design and review)
 
-- awesome-claude-code·Terminal Trove·Console.dev 제출, 데모 GIF, SmartScreen 안내, 크리에이터 연락, Lobsters 초대 요청
+- Submissions to awesome-claude-code, Terminal Trove and Console.dev, demo GIF, SmartScreen guide, creator outreach, Lobsters invite request
 
-## 루프 변경
+## Loop changes
 
-- v1 → v1.1: 리뷰에서 HN이 LLM 글을 금지한다는 점을 확인해, 에이전트는 사실 확인·소재까지만 하고 본문은 사람이 쓰도록 바꿈. 다운로드 지표를 설치 파일 기준으로 바꿈.
+- v1 → v1.1: The review confirmed that HN bans LLM-written posts, so agents now do only fact checking and material, and humans write the text. Switched the download metric to installers only.
 
-## 내일
+## Tomorrow
 
-- 10/25 아시아권 선공개, 첫 LISTEN 실행
+- 10/25 early release for Asia, first LISTEN run

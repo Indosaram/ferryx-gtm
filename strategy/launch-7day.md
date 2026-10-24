@@ -1,47 +1,47 @@
-# 7일 런칭 일정 (2026-10-24 ~ 10-31)
+# 7-day launch schedule (2026-10-24 ~ 10-31)
 
-전제: 기존 팔로워·영향력이 거의 없다. 스타는 알고리즘 채널과 남의 채널에서만 나온다.
+Premise: we have almost no existing followers or influence. Stars come only from algorithmic channels and other people's channels.
 
-| 날짜 (KST) | 할 일 |
+| Date (KST) | To do |
 |---|---|
-| 10/24(토) | 기준선 측정, 대기 명단(이슈 #1) 공개, README 데모 GIF, Windows SmartScreen 안내, HN·Reddit·GeekNews 계정 조건 확인, awesome-claude-code·Terminal Trove·Console.dev 제출, 크리에이터 연락, Lobsters 초대 요청 |
-| 10/24~25 **Show HN 전 필수** | 반론 #10 해소: Ferryx README·사이트에서 QR 표기 삭제("6-digit PIN pairing"), Gemini CLI → Antigravity, 에이전트 수 16으로 통일, "never lose work"·"free and open" 문구 삭제. 커밋 링크를 objections.md에 기록. **미완료 시 Show HN 연기** |
-| 10/25(일) | 아시아권 선공개: GeekNews Show GN(계정이 1주일 이상일 때만), 한국 개발 커뮤니티, Threads, Qiita·Zenn, V2EX. 여기서 나온 초기 스타가 GitHub Trending의 바탕 |
-| 10/26(월) | 22:00 KST Show HN (미국 동부 오전 9시, 13:00 UTC). 본문·댓글은 사람이 직접 씀. 이후 6시간 모든 댓글에 답변. Reddit은 조건을 충족한 r/ClaudeAI 등에만 1시간 간격 |
-| 10/27~29 | 반론 대응 핫픽스 공개, 벤치마크 글·기술 글로 HN 일반 게시 재도전 |
-| 10/30~31 | 뉴스레터·리스트 반영분 공유, 회고 글, 최종 측정 |
+| 10/24 (Sat) | Measure baseline, publish waitlist (issue #1), README demo GIF, Windows SmartScreen notice, check HN/Reddit/GeekNews account requirements, submit to awesome-claude-code/Terminal Trove/Console.dev, contact creators, request Lobsters invite |
+| 10/24~25 **Required before Show HN** | Resolve objection #10: remove QR wording from the Ferryx README and site ("6-digit PIN pairing"), Gemini CLI → Antigravity, unify agent count at 16, delete "never lose work" and "free and open" wording. Record commit links in objections.md. **If not done, postpone Show HN** |
+| 10/25 (Sun) | Early release in Asia: GeekNews Show GN (only if the account is at least 1 week old), Korean dev communities, Threads, Qiita/Zenn, V2EX. Early stars from here are the base for GitHub Trending |
+| 10/26 (Mon) | 22:00 KST Show HN (9 AM US Eastern, 13:00 UTC). Post body and comments written by a human. Reply to every comment for the next 6 hours. Reddit only in subs whose requirements we meet, such as r/ClaudeAI, 1 hour apart |
+| 10/27~29 | Ship hotfixes addressing objections, retry a regular HN post with a benchmark post or technical post |
+| 10/30~31 | Share newsletter/list mentions, retrospective post, final measurement |
 
-## 중간 판단 규칙
+## Mid-course decision rules
 
-- 10/27 01:00까지 Show HN이 첫 페이지에 못 오르면: 같은 글은 그대로 두고(재게시 금지), 10/28~29에 다른 각도의 새 글(벤치마크, "에이전트 8개 병렬" 기술 글)로 재도전.
-- (10/27 이후 적용) 하루 스타 증가가 20 미만인 날이 이틀 이어지면: 채널 대신 메시지 문제로 보고 헤드라인 A/B(병렬 vs 세션 유지 vs 원격 지휘)를 바꾼다.
-- Day 4 회고에서 대기 명단 20명 이상이면 Paddle 또는 Polar 가입 심사를 시작한다. 결제 오픈 자체는 90일 계획대로 12월에 한다.
+- If Show HN has not reached the front page by 10/27 01:00: leave the same post as is (no reposting), and retry on 10/28~29 with a new post from a different angle (benchmark, technical post on "8 agents in parallel").
+- (Applies after 10/27) If daily star growth is under 20 for two days in a row: treat it as a messaging problem rather than a channel problem and change the headline A/B (parallel vs session persistence vs remote control).
+- If the waitlist has 20+ people at the Day 4 retrospective, start the Paddle or Polar signup review. Opening payments itself happens in December per the 90-day plan.
 
-## Phase 0를 줄인 이유
+## Why Phase 0 was cut short
 
-GTM.md의 Phase 0(2~4주: 벤치마크, 데모, 가이드)는 원래 런칭 전 단계다. 이번에는 7일 대회 기간이라 줄였다. 카피 정리(반론 #10)만 Show HN 전에 끝내고, 벤치마크(반론 #11)와 세션 유지 측정(반론 #1)은 10/27~29 재도전 글의 소재로 옮긴다.
+Phase 0 in GTM.md (2~4 weeks: benchmarks, demo, guide) is originally a pre-launch stage. This time it was shortened because of the 7-day competition period. Only the copy cleanup (objection #10) is finished before Show HN; the benchmark (objection #11) and session persistence measurement (objection #1) move to material for the 10/27~29 retry posts.
 
-## 기대치 (경험적 추정, 검증 전)
+## Expectations (empirical estimate, unverified)
 
-- 7일 스타: 300~2,000. 10,000은 1% 미만.
-- 참고: HN에 올라간 AI 레포 138개의 평균 증가는 24시간 +121, 7일 +289 스타였다. 다만 표본 평균 시작점이 스타 1,247개라 팔로워 0인 경우와는 다르고, 중앙값은 훨씬 낮다 ([arXiv 2511.04453](https://arxiv.org/abs/2511.04453)).
-- 게시물에서는 "open source" 대신 "source-available"이라고 쓴다 (라이선스가 OSI 승인이 아님).
+- 7-day stars: 300~2,000. 10,000 is under 1%.
+- Reference: the average gain for 138 AI repos posted on HN was +121 stars in 24 hours and +289 in 7 days. However, the sample's average starting point was 1,247 stars, which differs from a zero-follower case, and the median is much lower ([arXiv 2511.04453](https://arxiv.org/abs/2511.04453)).
+- In posts, write "source-available" instead of "open source" (the license is not OSI-approved).
 
-## 뺀 것
+## Left out
 
-- Product Hunt: 팔로워 없는 런칭은 효과가 작다고 판단. 7일 뒤로 미룸.
-- HN 재게시 요청, 투표 요청: 규칙 위반 위험.
-- Lobsters 직접 게시: 신규 계정은 70일간 자기 홍보 불가 ([about](https://lobste.rs/about)). 이번 주는 댓글 참여만.
-- r/opensource, r/commandline: 라이선스·AI 프로젝트 규칙상 불가.
+- Product Hunt: judged low-impact for a launch with no followers. Postponed until after the 7 days.
+- Asking for HN reposts, asking for votes: risk of rule violations.
+- Posting directly to Lobsters: new accounts cannot self-promote for 70 days ([about](https://lobste.rs/about)). This week, comment participation only.
+- r/opensource, r/commandline: not allowed under their license/AI project rules.
 
-## 7일 이후: 90일 계획 (2026-11 ~ 2027-01)
+## After 7 days: 90-day plan (2026-11 ~ 2027-01)
 
-7일 루프를 같은 6단계로 계속 돌리되, 단계별 목표를 바꾼다. 수치는 7일 결과로 다시 잡는 가설이다.
+Keep running the 7-day loop with the same 6 steps, but change the goals per stage. The numbers are hypotheses to be reset based on the 7-day results.
 
-| 기간 | 초점 | 할 일 | 판단 지표 (가설) |
+| Period | Focus | To do | Decision metrics (hypothesis) |
 |---|---|---|---|
-| 1~4주 (11월) | 신뢰 회복과 활성화 | 반론 상위 5개 해결(보장 문구·Gemini·QR·"free and open" 카피 정리, 보안 문서, 벤치마크 공개), Windows 서명, 온보딩 GIF, 옵트인 익명 퍼널 계측(설치 → 에이전트 2개 이상 동시 실행) 구현 | 스타 1,000, (계측 배포 후) 설치 후 24시간 내 에이전트 2개 이상 실행 40% |
-| 5~8주 (12월) | 첫 매출 | Paddle 또는 Polar로 Pro 결제 오픈, 대기 명단 전환, 사용자 사례 5건, Product Hunt(팔로워가 생긴 뒤) | 유료 Pro 30명, 대기 명단 → 유료 전환 10% |
-| 9~12주 (1월) | 팀 신호 | Team 최소 관리 기능(초대·좌석), 같은 회사 도메인 3명 이상인 곳에 연락, 디자인 파트너 3팀 | Team 디자인 파트너 3팀, Team 유료 1건 |
+| Weeks 1~4 (November) | Rebuilding trust and activation | Resolve top 5 objections (clean up guarantee wording/Gemini/QR/"free and open" copy, security doc, publish benchmark), Windows signing, onboarding GIF, implement opt-in anonymous funnel instrumentation (install → 2+ agents running concurrently) | 1,000 stars, (after instrumentation ships) 40% run 2+ agents within 24 hours of install |
+| Weeks 5~8 (December) | First revenue | Open Pro payments via Paddle or Polar, convert waitlist, 5 user case studies, Product Hunt (once we have followers) | 30 paid Pro users, 10% waitlist → paid conversion |
+| Weeks 9~12 (January) | Team signals | Minimal Team admin features (invites/seats), reach out to companies with 3+ users on the same domain, 3 design partner teams | 3 Team design partner teams, 1 paid Team deal |
 
-**계속 지키는 원칙:** 매주 회고 결과를 `loop/CHANGELOG.md`에 남긴다. 측정하지 않은 성능 비교는 쓰지 않는다. 로드맵 항목은 "Coming soon"으로 표기한다.
+**Standing principles:** Record each weekly retrospective in `loop/CHANGELOG.md`. Do not write performance comparisons we have not measured. Mark roadmap items as "Coming soon".

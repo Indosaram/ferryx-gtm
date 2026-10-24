@@ -1,302 +1,302 @@
-# Ferryx Go-To-Market 전략
+# Ferryx Go-To-Market Strategy
 
-작성일: 2026-10-24 (4장 확정 반영: 2026-10-24)
-근거: Ferryx 저장소 README, LICENSE(Ferryx License 1.0, source-available; 이전 릴리스는 SUL-1.0), 사이트 문구, 2026-09 내부 경쟁 분석, 2026-10-24 외부 조사(본문 링크)
-표기 규칙: ✅ 현재 있음 · 🟡 일부 구현/미배선 · 🔮 향후 계획(현재 없음)
-
----
-
-## 1. 포지셔닝
-
-**한 줄 정의**
-> Ferryx는 AI 코딩 에이전트 여러 개를 한 화면에서 동시에 굴리고, 노트북을 닫아도 휴대폰에서 이어서 지휘할 수 있는 네이티브 작업 공간이다.
-
-**카테고리:** "터미널"이 아니라 **Agent Operations Workspace(에이전트 운영 작업 공간)**. 터미널(Ghostty, Warp)과 경쟁하지 않고, 그 위의 "에이전트 관제" 계층을 차지한다.
-
-**핵심 메시지 3개**
-1. **병렬로, 충돌 없이** — 에이전트마다 자동 Git 워크트리 ✅, 분할 창 ✅, 실시간 상태 ✅
-2. **꺼지지 않는 세션** — 데몬이 세션을 소유해 GUI를 닫아도 프로세스가 계속 돈다 ✅ (데몬 중지·재부팅 시 종료. 과거 업데이트 중 유실 사례가 있어 측정 공개 전까지 보장 표현 금지 — objections #1)
-3. **어디서든 지휘** — 휴대폰 6자리 PIN 페어링 ✅, SSH·포트 개방 없는 리눅스 서버 연결 ✅
-
-**보조 메시지(가설, 미측정):** "Zero bloat" — Electron 없음, GPU 렌더링. 경쟁 제품 대비 메모리 우위는 아직 측정하지 않았다. 재현 가능한 벤치마크(objections #11)를 공개하기 전에는 경쟁사 수치를 게시물에 쓰지 않는다.
-
-**벤더 중립:** Claude Code, Codex, OpenCode, Aider, Cline, Cursor CLI, Copilot CLI, Antigravity 등 16종을 상태 감지 대상으로 지원한다(README 기준). 특정 모델 회사의 도구가 아니라는 점이 IT 구매 관점에서 장점이다.
+Written: 2026-10-24 (Section 4 decisions applied: 2026-10-24)
+Sources: Ferryx repository README, LICENSE (Ferryx License 1.0, source-available; earlier releases are SUL-1.0), site copy, 2026-09 internal competitive analysis, 2026-10-24 external research (links in body)
+Legend: ✅ available now · 🟡 partially implemented / not wired up · 🔮 future plan (not available now)
 
 ---
 
-## 2. 타겟 오디언스
+## 1. Positioning
 
-### 2-1. 우선순위별 세그먼트 (가설, 인터뷰 전)
+**One-line definition**
+> Ferryx is a native workspace for running multiple AI coding agents side by side on one screen, and for continuing to direct them from your phone after you close your laptop.
 
-| 순위 | 세그먼트 | 특징 | 핵심 고통 | Ferryx가 주는 것 |
+**Category:** Not a "terminal" but an **Agent Operations Workspace**. It does not compete with terminals (Ghostty, Warp); it occupies the "agent control" layer on top of them.
+
+**Three core messages**
+1. **Parallel, without conflicts** — automatic Git worktree per agent ✅, split panes ✅, live status ✅
+2. **Sessions that stay up** — the daemon owns sessions, so processes keep running after the GUI closes ✅ (they end when the daemon stops or the machine reboots. There have been past cases of loss during updates, so no guarantee language until measurements are published — objections #1)
+3. **Direct from anywhere** — 6-digit PIN phone pairing ✅, Linux server connection with no SSH and no open ports ✅
+
+**Secondary message (hypothesis, unmeasured):** "Zero bloat" — no Electron, GPU rendering. Memory advantage over competitors has not been measured yet. Do not use competitor numbers in posts until a reproducible benchmark (objections #11) is published.
+
+**Vendor-neutral:** Supports status detection for 16 agents including Claude Code, Codex, OpenCode, Aider, Cline, Cursor CLI, Copilot CLI, and Antigravity (per README). Not being a tool from a specific model company is an advantage from an IT purchasing perspective.
+
+---
+
+## 2. Target Audience
+
+### 2-1. Segments by priority (hypothesis, before interviews)
+
+| Rank | Segment | Characteristics | Core pain | What Ferryx provides |
 |---|---|---|---|---|
-| **1 (비치헤드)** | 파워 유저 개인 개발자 / 인디 해커 | Claude Code·Codex를 하루 3개 이상 병렬로 돌림, Max/Pro 구독자 | 창 전환 피로, 브랜치 충돌, 에이전트가 입력 대기 중인지 모름 | 워크트리 자동화, 상태 표시, 완료 알림 |
-| **2** | 원격 서버·GPU 박스에서 일하는 개발자 | 홈랩, 클라우드 VM, ML 엔지니어 | SSH 끊김, tmux 수작업, 외출 중 확인 불가 | `ferryx-cli` + 릴레이, 세션 유지, 모바일 |
-| **3** | AI 도입 중인 스타트업 팀 (5~50명) | 엔지니어 1명당 에이전트 여러 개를 표준 운영 | 팀 차원의 에이전트 가시성·비용·보안 정책 없음 | 🔮 팀 대시보드, 공유 워크스페이스, 정책 |
-| **4** | 엔터프라이즈 플랫폼/DevEx 팀 | 보안·감사·온프레미스 요구 | 에이전트 행동 감사 불가, 외부 클라우드 거부 | 🔮 자체 호스팅 릴레이·허브, SSO, 감사 로그 |
+| **1 (beachhead)** | Power-user individual developers / indie hackers | Run 3+ Claude Code/Codex sessions in parallel daily, Max/Pro subscribers | Window-switching fatigue, branch conflicts, not knowing whether an agent is waiting for input | Worktree automation, status display, completion notifications |
+| **2** | Developers working on remote servers / GPU boxes | Homelab, cloud VMs, ML engineers | SSH disconnects, manual tmux, can't check while away | `ferryx-cli` + relay, persistent sessions, mobile |
+| **3** | Startup teams adopting AI (5–50 people) | Several agents per engineer as standard practice | No team-level agent visibility, cost, or security policy | 🔮 team dashboard, shared workspaces, policies |
+| **4** | Enterprise platform/DevEx teams | Security, audit, on-premises requirements | Cannot audit agent actions, reject external cloud | 🔮 self-hosted relay/hub, SSO, audit logs |
 
-### 2-2. 핵심 페르소나 (가설: 인터뷰로 검증 전)
+### 2-2. Key personas (hypothesis: not yet validated by interviews)
 
-- **"병렬 민수" (세그먼트 1):** 30대 풀스택, 월 $100~200을 AI 구독에 씀. tmux + iTerm으로 에이전트 4개를 돌리다 지침. X·Hacker News·Threads에서 도구 정보를 얻음. *결정 기준: 설치 5분 안에 체감되는 차이.*
-- **"서버 지은" (세그먼트 2):** ML 엔지니어. 학습·에이전트 작업이 원격 GPU 서버에서 돌고, 퇴근길에 진행 상황을 보고 싶어함. *결정 기준: 연결 안정성, 보안.*
-- **"리드 현우" (세그먼트 3):** 엔지니어링 매니저. 팀원들이 에이전트를 얼마나 어떻게 쓰는지 모름. *결정 기준: 가시성, 좌석당 가격, 보안 검토 통과.*
+- **"Parallel Minsu" (segment 1):** Full-stack developer in their 30s, spends $100–200/month on AI subscriptions. Worn out from running 4 agents with tmux + iTerm. Gets tool information from X, Hacker News, Threads. *Decision criterion: a noticeable difference within 5 minutes of installing.*
+- **"Server Jieun" (segment 2):** ML engineer. Training and agent jobs run on a remote GPU server; wants to check progress on the commute home. *Decision criteria: connection stability, security.*
+- **"Lead Hyunwoo" (segment 3):** Engineering manager. Does not know how much or how team members use agents. *Decision criteria: visibility, per-seat price, passing security review.*
 
-### 2-3. 지금 공략하지 않는 대상
-- AI 에이전트를 쓰지 않는 일반 터미널 사용자 (Ghostty·Warp와 정면 경쟁하게 됨)
-- 비개발자 (제품이 CLI 에이전트를 전제로 함)
+### 2-3. Not targeting now
+- General terminal users who do not use AI agents (would mean competing head-on with Ghostty/Warp)
+- Non-developers (the product assumes CLI agents)
 
 ---
 
-## 3. 경쟁 구도
+## 3. Competitive Landscape
 
-### 3-1. 2026-10-24 조사 (스타는 GitHub API, 가격은 각 사이트 링크)
+### 3-1. 2026-10-24 research (stars from GitHub API, prices from each site's link)
 
-| 제품 | 형태 | 가격 | 라이선스 | 스타 | Ferryx에 대한 위협 |
+| Product | Form | Price | License | Stars | Threat to Ferryx |
 |---|---|---|---|---|---|
-| [Orca](https://orca.dev) | Electron, 에이전트별 워크트리, 모바일·원격 | 무료 | MIT | 104,215 | 매우 높음: 기능이 거의 같고 커뮤니티가 가장 큼 |
-| [Herdr](https://herdr.dev) | Rust 서버가 터미널 소유, 클라이언트 접속 | 무료 (Cloud 대기) | Apache-2.0 | 45,599 | 매우 높음: "앱을 닫아도 살아있는 세션"을 선점 |
-| [Warp](https://www.warp.dev/pricing) | 네이티브 에이전트 터미널, Factories | $0 / $18 / $200, Business $50 | AGPL-3.0 | 65,670 | 중간: 자체 에이전트 중심 |
-| [T3 Code](https://t3.codes) | Electron 채팅형 제어판, 모바일 | 무료 | MIT | 29,711 | 높음: 큰 오디언스 |
-| [cmux](https://cmux.com) | Swift + libghostty, macOS 전용, iOS 베타 | $0 / Pro $40 / Team $60 | GPL-3.0 + BUSL | 28,378 | 높음: 네이티브 주장이 겹침 |
-| [Vibe Kanban](https://www.vibekanban.com/blog) | 칸반 + 워크트리 | 회사 종료(2026-04), 커뮤니티 유지 | Apache-2.0 | 28,442 | 낮음: 이탈 사용자 흡수 기회 |
-| [Superset](https://superset.sh/pricing) | Electron, 100+ 에이전트, SOC 2 | $0 / Pro $20 / Team $60 | ELv2 | 15,506 | 높음: 팀·보안 구매자 |
-| [Conductor](https://www.conductor.build/pricing) | macOS, 클라우드 VM, 멀티플레이어 | $0 / Pro $50 / Teams $60 | 비공개 | — | 높음: 상용 선두 |
-| Claude Code 자체 | [`--worktree`](https://code.claude.com/docs/en/common-workflows), [Remote Control](https://code.claude.com/docs/en/remote-control), [클라우드 세션](https://code.claude.com/docs/en/claude-code-on-the-web) | 구독 포함 | 비공개 | — | 매우 높음 |
-| Codex (ChatGPT 앱) | [워크트리](https://developers.openai.com/codex/app/worktrees.md), [모바일에서 시작·승인](https://developers.openai.com/codex/app.md) | 구독 포함 | 비공개 | — | 매우 높음 |
+| [Orca](https://orca.dev) | Electron, worktree per agent, mobile/remote | Free | MIT | 104,215 | Very high: nearly identical features and the largest community |
+| [Herdr](https://herdr.dev) | Rust server owns terminals, clients attach | Free (Cloud waitlist) | Apache-2.0 | 45,599 | Very high: already owns "sessions that survive closing the app" |
+| [Warp](https://www.warp.dev/pricing) | Native agent terminal, Factories | $0 / $18 / $200, Business $50 | AGPL-3.0 | 65,670 | Medium: centered on its own agent |
+| [T3 Code](https://t3.codes) | Electron chat-style control panel, mobile | Free | MIT | 29,711 | High: large audience |
+| [cmux](https://cmux.com) | Swift + libghostty, macOS only, iOS beta | $0 / Pro $40 / Team $60 | GPL-3.0 + BUSL | 28,378 | High: overlapping native claim |
+| [Vibe Kanban](https://www.vibekanban.com/blog) | Kanban + worktrees | Company shut down (2026-04), community-maintained | Apache-2.0 | 28,442 | Low: opportunity to absorb departing users |
+| [Superset](https://superset.sh/pricing) | Electron, 100+ agents, SOC 2 | $0 / Pro $20 / Team $60 | ELv2 | 15,506 | High: team/security buyers |
+| [Conductor](https://www.conductor.build/pricing) | macOS, cloud VMs, multiplayer | $0 / Pro $50 / Teams $60 | Proprietary | — | High: commercial leader |
+| Claude Code itself | [`--worktree`](https://code.claude.com/docs/en/common-workflows), [Remote Control](https://code.claude.com/docs/en/remote-control), [cloud sessions](https://code.claude.com/docs/en/claude-code-on-the-web) | Included in subscription | Proprietary | — | Very high |
+| Codex (ChatGPT app) | [Worktrees](https://developers.openai.com/codex/app/worktrees.md), [start/approve from mobile](https://developers.openai.com/codex/app.md) | Included in subscription | Proprietary | — | Very high |
 
-**결론**
-- 워크트리, 휴대폰 제어, 세션 유지는 이제 기본 사양이다. 이것만으로는 차별화되지 않는다.
-- Ferryx가 이길 수 있는 교집합: **네이티브(비 Electron) + 16종 에이전트 혼용 + 데몬 세션 + 포트 개방 없는 원격 리눅스 + 낮은 가격**. Orca·T3·Superset은 Electron, cmux는 macOS 전용, Herdr는 TUI, 벤더 기능은 자기 에이전트 전용이다.
-- 가격: 위 표의 경쟁사 유료 플랜은 대부분 $18~60/월이라 Pro $8, Team $12는 공격적이다. 대신 클라우드 VM이 없다는 점을 분명히 한다.
-- [Herdr 비교 페이지](https://herdr.dev/compare)가 데스크톱 앱은 앱이 열려 있을 때만 일한다고 비교하므로, Ferryx 데몬은 **측정으로** 반박해야 한다 (반론 #1과 연결).
+**Conclusions**
+- Worktrees, phone control, and persistent sessions are now table stakes. They alone do not differentiate.
+- The intersection where Ferryx can win: **native (non-Electron) + mixing 16 agents + daemon sessions + remote Linux without open ports + low price**. Orca, T3, and Superset are Electron; cmux is macOS only; Herdr is a TUI; vendor features only work with their own agent.
+- Price: most competitor paid plans in the table above are $18–60/month, so Pro $8 and Team $12 are aggressive. In exchange, be clear that there are no cloud VMs.
+- The [Herdr comparison page](https://herdr.dev/compare) argues that desktop apps only work while the app is open, so the Ferryx daemon must rebut this **with measurements** (linked to objection #1).
 
-### 3-2. 유형별 정리
+### 3-2. By type
 
-| 유형 | 대표 | Ferryx의 차별점 |
+| Type | Examples | Ferryx differentiation |
 |---|---|---|
-| 에이전트 관리 앱 | cmux, Orca, Herdr, Vibe Kanban, T3 Code | 네이티브(비 Electron) + 데몬 세션 유지 + 모바일·원격 서버를 한 제품에서 |
-| AI 터미널 | Warp | 로그인 강제 없음, 특정 AI에 묶이지 않음, 워크트리 중심 |
-| 범용 터미널/멀티플렉서 | Ghostty, tmux, Zellij | 같은 엔진(libghostty)을 쓰면서 에이전트 상태·워크트리·원격 지휘를 추가 |
-| 클라우드 에이전트 | Codex(ChatGPT 앱), Devin, [Cursor Cloud Agents](https://cursor.com/docs/cloud-agent), [Copilot cloud agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent) | 코드와 실행이 내 머신·내 서버에 남음 (프라이버시·비용 통제) |
+| Agent management apps | cmux, Orca, Herdr, Vibe Kanban, T3 Code | Native (non-Electron) + daemon-persisted sessions + mobile/remote servers in one product |
+| AI terminal | Warp | No forced login, not tied to a specific AI, worktree-centric |
+| General terminals/multiplexers | Ghostty, tmux, Zellij | Uses the same engine (libghostty) and adds agent status, worktrees, and remote control |
+| Cloud agents | Codex (ChatGPT app), Devin, [Cursor Cloud Agents](https://cursor.com/docs/cloud-agent), [Copilot cloud agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent) | Code and execution stay on my machine / my server (privacy and cost control) |
 
-**포지셔닝 맵:** 가로축 "로컬 ↔ 클라우드", 세로축 "단일 에이전트 ↔ 다중 에이전트 운영". Ferryx는 **"로컬 우선 + 다중 에이전트 운영"** 칸을 차지하고, 원격 지휘로 클라우드의 편의성까지 가져온다.
+**Positioning map:** Horizontal axis "local ↔ cloud", vertical axis "single agent ↔ multi-agent operations". Ferryx occupies the **"local-first + multi-agent operations"** quadrant, and brings cloud-like convenience through remote control.
 
 ---
 
-## 4. 수익 모델·라이선스·가격 (확정: 2026-10-24)
+## 4. Revenue Model, License, Pricing (decided: 2026-10-24)
 
-> 결제 오픈은 보류 중이다. 아래 결정과 저장소 준비(가격표, 라이선스 초안, CLA)는 끝났고, 결제를 열 때 그대로 쓴다.
+> Opening payments is on hold. The decisions below and the repository preparation (pricing table, license draft, CLA) are done and will be used as-is when payments open.
 
-### 4-1. 현재 상태
-- 유료 플랜은 판매 전이다. 가격(Pro $8, Team 출시가 $12/정가 $16)만 공개했다.
-- 과금 기준을 "연결 머신 수"에서 "회사 업무용 사용 권리 + 좌석 + 관리 기능"으로 바꿨다(4-3). 이전 라이선스는 회사 내부 사용을 무료로 허용해 회사가 돈을 낼 이유가 없었고, 팀이 돈을 낼 관리·보안 기능도 플랜에 없었다.
+### 4-1. Current status
+- Paid plans are not on sale yet. Only prices are published (Pro $8, Team launch price $12 / list price $16).
+- The billing basis changed from "number of connected machines" to "right to use for company work + seats + management features" (4-3). The previous license allowed free internal company use, so companies had no reason to pay, and the plans had no management/security features a team would pay for.
 
-### 4-2. 라이선스 (변경 완료, 2026-10-24)
-1. **코어 앱: 회사 규모 기준 상업 라이선스** (Docker Desktop 방식)
-   - 무료: 개인, 교육, 오픈소스 프로젝트, 비영리, **직원·계약자 50명 미만 그리고 연매출 $5M 미만** 회사
-   - 그 외 회사의 업무용 사용: Team 이상 구독 필요
-   - 소스 공개는 유지
-2. **팀·비즈니스 기능 코드: 별도 상용 라이선스** (n8n의 `.ee` 방식). SSO, 감사 로그, 정책 엔진 등은 `ee/` 디렉터리에 두고 라이선스 키로 활성화.
-3. **자체 호스팅 릴레이: 모두에게 계속 무료** (큰 회사 포함). 사이트의 "영구 무료" 약속을 지킨다.
-   - 우회 문제는 1번이 이미 막는다. 큰 회사는 릴레이를 직접 돌려도 앱을 업무에 쓰면 Team 이상이 필요하다.
-   - 약속을 뒤집어 얻는 매출보다 신뢰 손실이 크다.
+### 4-2. License (changed, 2026-10-24)
+1. **Core app: commercial license based on company size** (Docker Desktop model)
+   - Free: individuals, education, open-source projects, nonprofits, companies with **fewer than 50 employees and contractors and under $5M annual revenue**
+   - Work use by other companies: requires Team or higher subscription
+   - Source remains available
+2. **Team/business feature code: separate commercial license** (n8n's `.ee` model). SSO, audit logs, policy engine, etc. live in the `ee/` directory and are enabled by a license key.
+3. **Self-hosted relay: remains free for everyone** (including large companies). Keeps the site's "free forever" promise.
+   - Item 1 already blocks circumvention. Even if a large company runs its own relay, using the app for work requires Team or higher.
+   - The loss of trust from reversing the promise outweighs the revenue gained.
 
-**무료 기준을 50명/$5M으로 정한 이유:** 10명/$1M은 너무 빡빡하다. Docker는 설치 기반이 거대해진 뒤인 2021년에야 [250명/$10M 기준](https://www.docker.com/legal/docker-subscription-service-agreement/)을 걸었다. Ferryx는 아직 퍼지는 단계라, 스타트업 개발자가 회사에 들여와 퍼뜨리는 경로를 막으면 손해가 더 크다. 나중에 기준을 조이는 건 가능하지만 처음부터 막으면 성장 경로를 잃는다.
+**Why the free threshold is 50 people / $5M:** 10 people / $1M is too tight. Docker only introduced its [250 people / $10M threshold](https://www.docker.com/legal/docker-subscription-service-agreement/) in 2021, after its install base became huge. Ferryx is still in the spreading stage; blocking the path where startup developers bring it into their company and spread it costs more. Tightening the threshold later is possible, but blocking from the start loses the growth path.
 
-**대안 비교**
-| 안 | 회사 과금 가능? | 비고 |
+**Alternatives compared**
+| Option | Can bill companies? | Notes |
 |---|---|---|
-| 현행 SUL 유지 + 기능 과금만 | 약함 | 팀 기능을 안 쓰는 회사는 무료로 계속 사용 |
-| FSL / Elastic License 2.0 | 약함 | 둘 다 내부 사용 허용. 경쟁 SaaS 차단 용도 |
-| **회사 규모 기준 + 상용 기능 분리 (채택)** | **강함** | 반발은 소규모 무료 기준·릴레이 무료 유지·유예기간으로 완화 |
-| 완전 비공개 상용 | 강함 | 소스 공개 신뢰 자산 상실, 비권장 |
+| Keep current SUL + feature billing only | Weak | Companies not using team features keep using it for free |
+| FSL / Elastic License 2.0 | Weak | Both allow internal use. Intended to block competing SaaS |
+| **Company-size threshold + separate commercial features (adopted)** | **Strong** | Backlash mitigated by small-company free tier, free relay, and grace period |
+| Fully closed commercial | Strong | Loses source-available trust asset; not recommended |
 
-**저장소 변경** (Ferryx main 반영 완료, 2026-10-24)
-- `LICENSE`를 **Ferryx License 1.0**으로 교체했다. 다음 릴리스부터 적용되고, 이미 배포된 버전은 SUL로 남는다.
-- **전환 유예:** Team 플랜 판매 시작 후 90일까지는 큰 회사도 업무용으로 무료다. 결제를 보류하는 동안에는 아무도 돈을 낼 필요가 없다.
-- README(영문·중문), Cargo 메타데이터, 사이트(히어로, FAQ, facts, 소개, 가격, 비교 페이지, 블로그 12편)의 SUL 문구를 모두 바꿨다.
-- `docs/legal/LICENSE_TRANSITION.md`: 바뀐 점, 감수한 위험, 남은 일.
-- `CLA.md`, `CONTRIBUTING.md`, `.github/workflows/cla.yml`: 새 기여에 CLA 서명을 요구한다.
+**Repository changes** (applied to Ferryx main, 2026-10-24)
+- Replaced `LICENSE` with **Ferryx License 1.0**. Applies from the next release; already distributed versions remain under SUL.
+- **Transition grace period:** Large companies can use it for work for free until 90 days after Team plan sales start. While payments are on hold, nobody needs to pay.
+- Replaced all SUL wording in the README (English and Chinese), Cargo metadata, and site (hero, FAQ, facts, about, pricing, comparison pages, 12 blog posts).
+- `docs/legal/LICENSE_TRANSITION.md`: what changed, risks accepted, remaining work.
+- `CLA.md`, `CONTRIBUTING.md`, `.github/workflows/cla.yml`: new contributions require a CLA signature.
 
-**법률 검토:** 라이선스 문구는 첫 유료 Team 판매 전에 법률 검토를 받는다. 새 기여는 CLA로 받는다.
+**Legal review:** License wording gets legal review before the first paid Team sale. New contributions are accepted under the CLA.
 
-### 4-3. 플랜 구조 (확정, 사이트 `pricing.json` 반영 완료)
+### 4-3. Plan structure (decided, applied to site `pricing.json`)
 
-| 플랜 | 가격 | 공개 방식 | 포함 |
+| Plan | Price | Availability | Includes |
 |---|---|---|---|
-| **Free** | $0 | 지금 이용 가능 | 개인·교육·OSS·비영리·소규모 회사. 로컬 기능 전체, 관리형 릴레이 머신 1대, 휴대폰 연결 |
-| **Pro** | $8/월 · $80/년 | 출시 예정 가격 공개 | 개인 파워 유저. 머신 10대 + 추가 팩, 🔮 모바일 푸시, 🔮 설정 동기화 |
-| **Team** | 출시가 $12/좌석/월 · $120/년 → 정가 $16 · $160, 최소 3석 | 출시 예정 가격 공개 | **회사 업무용 사용 권리**, 머신 풀, 조직·초대·관리자 역할 🟡, 🔮 공유 템플릿, 🔮 팀 대시보드 |
-| **Business** | 비공개 | 대기 명단 | 🔮 SSO, 🔮 감사 로그, 🔮 정책 엔진, 🔮 비용 리포트. 최소 10석 |
-| **Enterprise** | 견적 | 문의 | 🔮 SCIM, 🔮 계정·허브 온프레미스, 인보이스 결제, SLA |
+| **Free** | $0 | Available now | Individuals, education, OSS, nonprofits, small companies. All local features, 1 managed relay machine, phone connection |
+| **Pro** | $8/month · $80/year | Upcoming price published | Individual power users. 10 machines + add-on packs, 🔮 mobile push, 🔮 settings sync |
+| **Team** | Launch price $12/seat/month · $120/year → list price $16 · $160, minimum 3 seats | Upcoming price published | **Right to use for company work**, machine pool, org/invites/admin roles 🟡, 🔮 shared templates, 🔮 team dashboard |
+| **Business** | Not published | Waitlist | 🔮 SSO, 🔮 audit logs, 🔮 policy engine, 🔮 cost reports. Minimum 10 seats |
+| **Enterprise** | Quote | Contact | 🔮 SCIM, 🔮 on-premises accounts/hub, invoice billing, SLA |
 
-- **Team 출시가를 쓰는 이유:** 지금 Team이 파는 건 사실상 "업무용으로 써도 된다는 권리"뿐이다. 관리 기능이 나오면 정가로 올리고, 출시가 가입자에게는 미리 알린다.
-- **Business에 가격을 붙이지 않는 이유:** 핵심 기능이 전부 🔮다. 대기 명단으로 실제 수요와 지불 의사를 먼저 잰다.
-- **가치 기준 전환:** "머신 수" → **"회사 업무용 사용 권리 + 좌석 + 관리·보안 기능"**. 머신 수는 Pro의 보조 기준으로만 남긴다.
+- **Why Team has a launch price:** Right now Team effectively sells only "the right to use it for work". When management features ship, the price rises to list price, and launch-price subscribers are notified in advance.
+- **Why Business has no price:** All its core features are 🔮. Use the waitlist to measure real demand and willingness to pay first.
+- **Value basis shift:** "number of machines" → **"right to use for company work + seats + management/security features"**. Machine count remains only as a secondary basis for Pro.
 
-### 4-4. 전환 실행 순서
-1. ~~가격표 개편, 라이선스 교체, CLA 도입~~ (2026-10-24 완료, main 반영)
-2. 변경 공지 글 게시. 법률 검토와 과거 외부 기여자 동의를 받는다
-3. CLA 워크플로 활성화 (서명 저장소·시크릿 생성)
-4. **[보류] 결제 오픈.** 열 때는 Pro부터. 결제 대행사는 Paddle 또는 Polar로 재선정한다(4-5). 결제 흐름을 검증하고 첫 매출을 만든다.
-5. Team 최소 관리 기능(멤버 초대·제거, 좌석 관리) 출시
-6. Team 판매 시작과 함께 **90일 유예** 시작(라이선스에 이미 들어 있음). 기존 사용자와 얼리 서포터는 첫해 50% 할인
-7. Business는 대기 명단 → 디자인 파트너 → SSO, 감사 로그, 정책 엔진 순으로 출시하면서 가격 공개
+### 4-4. Transition execution order
+1. ~~Pricing table overhaul, license replacement, CLA introduction~~ (completed 2026-10-24, applied to main)
+2. Publish the change announcement. Get legal review and consent from past external contributors
+3. Activate the CLA workflow (create signature repository and secrets)
+4. **[On hold] Open payments.** When opening, start with Pro. Re-select the payment provider between Paddle and Polar (4-5). Validate the payment flow and make the first revenue.
+5. Ship minimal Team management features (invite/remove members, seat management)
+6. Start the **90-day grace period** with the start of Team sales (already in the license). Existing users and early supporters get 50% off the first year
+7. Business: waitlist → design partners → ship SSO, audit logs, policy engine in that order while publishing the price
 
-**과금 원칙:** 로컬 기능은 개인에게 절대 잠그지 않는다. 자체 호스팅 릴레이는 누구에게나 무료다. 과금 대상은 "큰 회사의 업무용 사용"과 "팀 관리·보안 기능"이다.
+**Billing principles:** Never lock local features for individuals. The self-hosted relay is free for everyone. What is billed is "work use by large companies" and "team management/security features".
 
 
-### 4-5. 외부 벤치마크로 다시 본 결정 (2026-10-24 조사)
+### 4-5. Decisions revisited against external benchmarks (2026-10-24 research)
 
-**가격 위치.** 비슷한 개발자 도구의 개인 유료 플랜은 $10~20, 팀 플랜은 좌석당 $15~60이다: [Termius](https://termius.com/pricing) Pro $10 / Team $20, [Raycast](https://www.raycast.com/pricing) Pro $10 / Team $15, [Tailscale](https://tailscale.com/pricing) Standard $8, [Docker](https://www.docker.com/pricing/) Team $16, [Warp](https://www.warp.dev/pricing) Business $50, [Conductor](https://www.conductor.build/pricing)·[cmux](https://cmux.com/pricing) Team $60. Pro $8, Team $12(정가 $16)는 이 범위의 맨 아래에 있다. 클라우드 VM 같은 원가 큰 기능이 없으니 이 위치가 맞다. 대신 "싸다"를 메시지로 쓰지 않고 "내 머신에서 돈다"를 메시지로 쓴다.
+**Price position.** Comparable developer tools charge $10–20 for individual paid plans and $15–60 per seat for team plans: [Termius](https://termius.com/pricing) Pro $10 / Team $20, [Raycast](https://www.raycast.com/pricing) Pro $10 / Team $15, [Tailscale](https://tailscale.com/pricing) Standard $8, [Docker](https://www.docker.com/pricing/) Team $16, [Warp](https://www.warp.dev/pricing) Business $50, [Conductor](https://www.conductor.build/pricing)·[cmux](https://cmux.com/pricing) Team $60. Pro $8 and Team $12 (list $16) sit at the bottom of this range. With no high-cost features like cloud VMs, this position is right. But do not use "cheap" as the message; use "runs on my machine".
 
-**회사 규모 기준의 선례.** [Docker 구독 약관](https://www.docker.com/legal/docker-subscription-service-agreement/)은 직원 250명 미만이면서 매출 $10M 미만이면 무료다. [PolyForm Small Business](https://github.com/polyformproject/polyform-licenses/blob/76a278c402bc43b8d2b561da140b0f3e17263015/PolyForm-Small-Business-1.0.0.md#L35-L37)는 100명 미만이면서 $1M 미만이다. Ferryx의 50명/$5M은 그 사이로, 업계 선례에서 벗어나지 않는다.
+**Precedents for company-size thresholds.** The [Docker subscription agreement](https://www.docker.com/legal/docker-subscription-service-agreement/) is free for fewer than 250 employees and under $10M revenue. [PolyForm Small Business](https://github.com/polyformproject/polyform-licenses/blob/76a278c402bc43b8d2b561da140b0f3e17263015/PolyForm-Small-Business-1.0.0.md#L35-L37) is fewer than 100 people and under $1M. Ferryx's 50 people / $5M falls between them and stays within industry precedent.
 
-**라이선스 변경 반발의 교훈.** 큰 반발은 OSI 라이선스로 커뮤니티가 커진 뒤에 바꾼 경우에 나왔다: HashiCorp의 BSL 전환은 [HN 632점·댓글 731개](https://news.ycombinator.com/item?id=37081306)를 받고 OpenTofu 포크로 이어졌고, Redis는 [Valkey 포크](https://www.linuxfoundation.org/press/linux-foundation-launches-open-source-valkey-community)를 겪었다. 처음부터 fair-code였던 n8n은 [반응이 거의 없었다](https://news.ycombinator.com/item?id=30723477). Ferryx는 스타 17개 단계에서 바꿨고 이전 라이선스(SUL)도 OSI가 아니었으므로 위험은 낮다고 본다(추정). 다만 9/14 MIT → SUL 전환 이력이 있으므로, 공지 글에서 "다시 바꾸지 않는다"는 약속과 이전 버전 권리 유지를 분명히 한다.
+**Lessons from license-change backlash.** Major backlash came when projects changed after growing a community under an OSI license: HashiCorp's switch to BSL drew [632 points and 731 comments on HN](https://news.ycombinator.com/item?id=37081306) and led to the OpenTofu fork, and Redis went through the [Valkey fork](https://www.linuxfoundation.org/press/linux-foundation-launches-open-source-valkey-community). n8n, which was fair-code from the start, [drew almost no reaction](https://news.ycombinator.com/item?id=30723477). Ferryx changed at 17 stars and its previous license (SUL) was also not OSI, so we consider the risk low (estimate). However, given the 9/14 MIT → SUL change history, the announcement must clearly promise "we will not change it again" and that rights to previous versions are preserved.
 
-**결제 대행사(MoR) 재검토.** 현재 결제 코드는 Lemon Squeezy 기준인데, Lemon Squeezy는 [2026-01 공지](https://www.lemonsqueezy.com/blog/2026-update)에서 지원·업데이트가 느려졌다고 인정하고 Stripe Managed Payments로의 이전을 예고했다. 그런데 [Stripe Managed Payments는 한국 사업자를 지원하지 않는다](https://docs.stripe.com/payments/managed-payments/eligibility). 그래서 결제를 열 때는 [Paddle](https://www.paddle.com/pricing)(5% + 50¢)이나 [Polar](https://polar.sh/resources/pricing)(5% + 50¢, 월 $20 플랜부터 3.8% + 40¢, 한국 정산 지원)를 우선 검토한다. 결제 연동부는 대행사를 바꿀 수 있게 어댑터 경계를 유지한다.
+**Payment provider (MoR) review.** The current payment code targets Lemon Squeezy, but in its [2026-01 announcement](https://www.lemonsqueezy.com/blog/2026-update) Lemon Squeezy acknowledged slower support and updates and announced a migration to Stripe Managed Payments. However, [Stripe Managed Payments does not support Korean businesses](https://docs.stripe.com/payments/managed-payments/eligibility). So when opening payments, consider [Paddle](https://www.paddle.com/pricing) (5% + 50¢) or [Polar](https://polar.sh/resources/pricing) (5% + 50¢, 3.8% + 40¢ from the $20/month plan, supports Korean payouts) first. Keep an adapter boundary in the payment integration so the provider can be swapped.
 
-**전환율 기준.** 셀프 서브 프리미엄 모델의 Free → 유료 전환율은 3~5%가 양호, 6~8%가 우수다([Lenny's Newsletter, 2023](https://www.lennysnewsletter.com/p/what-is-a-good-free-to-paid-conversion), B2B SaaS 1,000여 개 기준). 8장의 Pro 전환 목표 3~5%는 이 기준을 따른다. 개발자 터미널 도구만의 공개 수치는 찾지 못했다.
+**Conversion benchmarks.** For self-serve freemium, Free → paid conversion of 3–5% is good and 6–8% is excellent ([Lenny's Newsletter, 2023](https://www.lennysnewsletter.com/p/what-is-a-good-free-to-paid-conversion), based on ~1,000 B2B SaaS companies). The Pro conversion target of 3–5% in Section 8 follows this benchmark. No public figures specific to developer terminal tools were found.
 
 ---
 
-## 5. 제품 로드맵 (마케팅·세일즈용)
+## 5. Product Roadmap (for marketing and sales)
 
-### 5-1. 현재 기능을 "이야기"로 묶기 ✅
+### 5-1. Packaging current features as "stories" ✅
 
-| 스토리 | 근거 기능 |
+| Story | Supporting features |
 |---|---|
-| "에이전트마다 워크트리, 브랜치 충돌 방지" | 에이전트별 자동 워크트리, 경로 탈출 방지 |
-| "노트북을 덮어도 에이전트는 계속 일한다" | 데몬 세션 소유, 재접속 시 출력 재생, 무중단 데몬 교체 |
-| "지하철에서 승인 버튼 누르기" | 모바일 PIN 페어링, 원격 웹 클라이언트 |
-| "포트 하나 안 열고 GPU 서버 지휘" | `ferryx-cli` + 릴레이 + QUIC 직접 연결 |
-| "브라우저에서 찍어서 에이전트에게 고쳐달라고" | Design Mode: 요소 선택 → 캡처·메모 → 에이전트 터미널로 전달 (macOS, 로컬 세션) |
-| "지난주 대화 이어서 하기" | 과거 에이전트 대화 검색·재개 |
-| "대기 중인 일만 한눈에" | 전체 워크스페이스 Attention Inbox (데스크톱) |
+| "A worktree per agent, no branch conflicts" | Automatic worktree per agent, path-escape prevention |
+| "Close the laptop and the agents keep working" | Daemon-owned sessions, output replay on reconnect, zero-downtime daemon replacement |
+| "Press the approve button on the subway" | Mobile PIN pairing, remote web client |
+| "Direct a GPU server without opening a single port" | `ferryx-cli` + relay + direct QUIC connection |
+| "Point at it in the browser and ask the agent to fix it" | Design Mode: select element → capture/note → send to agent terminal (macOS, local sessions) |
+| "Pick up last week's conversation" | Search and resume past agent conversations |
+| "See only what's waiting, at a glance" | Attention Inbox across all workspaces (desktop) |
 
-### 5-2. 향후 계획 🔮 (로드맵 페이지와 영업 자료에 공개)
+### 5-2. Future plans 🔮 (published on the roadmap page and in sales materials)
 
-**Now (0~3개월) — 개인 사용자 전환용**
-- 🔮 **모바일 푸시 알림** "에이전트가 당신을 기다립니다" (구독 저장소만 있고 발송기 없음 🟡)
-- 🔮 **모바일 네이티브 승인/채팅 화면** (권한 요청을 휴대폰에서 원탭 승인)
-- 🔮 **워크트리 디스크 대시보드·정리** (범위 확정 문서 있음)
-- 🔮 **에이전트 상태 워치독** (멈춘 에이전트 자동 감지)
+**Now (0–3 months) — for converting individual users**
+- 🔮 **Mobile push notifications** "Your agent is waiting for you" (subscription store exists, no sender 🟡)
+- 🔮 **Native mobile approval/chat screen** (one-tap approval of permission requests on the phone)
+- 🔮 **Worktree disk dashboard / cleanup** (scoping document exists)
+- 🔮 **Agent status watchdog** (automatic detection of stuck agents)
 
-**Next (3~6개월) — Pro 가치 강화**
-- 🔮 **에이전트 비용·토큰 대시보드** — 에이전트·프로젝트별 사용량과 예상 비용
-- 🔮 **에이전트 오케스트레이션 템플릿** — "기획 → 구현 → 리뷰" 에이전트를 순서대로 연결하는 레시피 (기존 DAG 뷰어 활용)
-- 🔮 **공개 제어 API / CLI** — 외부에서 에이전트 생성·시작·중지 (`ferryx_scope/control` 미배선 🟡)
-- 🔮 **결과 비교 뷰** — 같은 작업을 에이전트 2~3개에 맡기고 diff를 나란히 비교해 채택
-- 🔮 **세션 공유 링크** — 진행 중인 에이전트 세션을 동료에게 읽기 전용으로 공유
+**Next (3–6 months) — strengthening Pro value**
+- 🔮 **Agent cost/token dashboard** — usage and estimated cost per agent and project
+- 🔮 **Agent orchestration templates** — recipes that chain "plan → implement → review" agents in sequence (reusing the existing DAG viewer)
+- 🔮 **Public control API / CLI** — create, start, and stop agents externally (`ferryx_scope/control` not wired up 🟡)
+- 🔮 **Result comparison view** — give the same task to 2–3 agents, compare diffs side by side, and adopt one
+- 🔮 **Session share links** — share an in-progress agent session read-only with a colleague
 
-**Later (6~12개월) — Team/Enterprise 판매용**
-- 🔮 **팀 대시보드** — 팀 전체 에이전트 활동, 대기 시간, 병목
-- 🔮 **정책 엔진** — 위험 명령(`rm -rf`, `git push --force`, 비밀값 접근) 차단·승인 필수화
-- 🔮 **감사 로그** — 어떤 에이전트가 어떤 명령을 실행했는지 기록·내보내기
-- 🔮 **자체 호스팅 허브**, SSO/SCIM (자체 호스팅 릴레이는 이미 있음 ✅)
-- 🔮 **ferryx-hub 관리형 서비스** — Slack/Discord에서 "이 이슈 고쳐줘" → 팀원 머신의 에이전트로 배정
-- 🔮 **클라우드 실행 노드(선택)** — 내 머신이 꺼져도 돌아가는 관리형 리눅스 워커
+**Later (6–12 months) — for Team/Enterprise sales**
+- 🔮 **Team dashboard** — team-wide agent activity, wait time, bottlenecks
+- 🔮 **Policy engine** — block or require approval for risky commands (`rm -rf`, `git push --force`, secret access)
+- 🔮 **Audit logs** — record and export which agent ran which command
+- 🔮 **Self-hosted hub**, SSO/SCIM (self-hosted relay already exists ✅)
+- 🔮 **ferryx-hub managed service** — "fix this issue" in Slack/Discord → assigned to an agent on a team member's machine
+- 🔮 **Cloud execution nodes (optional)** — managed Linux workers that keep running when my machine is off
 
-> **로드맵 표기 원칙:** 마케팅 자료에서 🔮 항목은 반드시 "Coming soon / Roadmap"으로 표시한다. 엔터프라이즈 계약서에는 미래 기능을 구속력 있는 약속으로 넣지 않는다. 출시되지 않은 기능을 현재 기능처럼 쓰면 신뢰와 법적 리스크가 생긴다.
-
----
-
-## 6. GTM 단계별 실행 계획
-
-### Phase 0 — 준비 (2~4주)
-- **증거 만들기:** Orca·cmux·Warp 대비 메모리·시작 시간·에이전트 8개 동시 실행 벤치마크 공개 (재현 스크립트 포함)
-- **사이트 정비:** 30초 데모 영상(에이전트 4개 병렬 → 노트북 닫기 → 휴대폰에서 승인), 비교 페이지, 프라이버시 선언 페이지, 공개 로드맵
-- **헤드리스 리눅스 서버 가이드** 공개 (기능은 있는데 알려지지 않음)
-- **계측:** 설치 → 첫 에이전트 실행 → 첫 워크트리 → 첫 원격 페어링 퍼널 (옵트인, 익명)
-
-### Phase 1 — 커뮤니티 런칭 (1~3개월) · 목표: 개인 사용자 확보
-- **Show HN** (제목은 skills/channel-post.md 기준), 조건을 충족한 서브레딧(r/ClaudeAI 등). Product Hunt는 팔로워가 생긴 뒤로 미룬다 (launch-7day.md)
-- **에이전트 생태계 편승:** Claude Code·Codex 사용 팁 콘텐츠에 Ferryx를 자연스럽게 노출. "Claude Code 병렬 실행 가이드" 같은 검색 유입형 글
-- **한국 시장 동시 공략:** Threads·GeekNews·디스코드 커뮤니티. 개발자 본인이 직접 빌드 과정을 공유하는 build-in-public
-- **크리에이터:** AI 코딩 유튜버/스트리머에게 연락. 결제 오픈 시 Pro 1년 무료 코드를 약속(현재 Pro 판매 전)
-- **오픈 디스코드:** 버그 리포트·기능 투표 → 로드맵 반영 공개
-
-### Phase 2 — 수익화 (3~6개월) · 목표: Pro 전환 검증
-- 관리형 릴레이·푸시 알림 출시와 함께 Pro 오픈
-- 앱 안 업셀 지점: 원격 서버 3대째 추가할 때, 외부망에서 휴대폰으로 처음 접속할 때
-- 사용자 사례 5건 (인디 해커, ML 엔지니어, 스타트업 CTO)
-
-### Phase 3 — 팀 확장 (6~12개월) · 목표: 바텀업 → 팀 계약
-- **PLG 신호:** 같은 회사 이메일 도메인 사용자 3명 이상 → 영업 접촉
-- Team 플랜 14일 무료 체험, 셀프 서브 결제
-- 디자인 파트너 5개 팀과 팀 대시보드·정책 엔진 공동 설계 (로드맵 기능을 미리 팔아 검증)
-- 보안 검토 자료: 데이터 흐름도, 릴레이가 보는/못 보는 데이터, SOC 2 로드맵
-
-### Phase 4 — 엔터프라이즈 (12개월 이후)
-- 자체 호스팅·SSO·감사 로그를 갖춘 Enterprise
-- 파트너: AI 도입 컨설팅사, 클라우드 마켓플레이스(AWS/Azure)
-- Microsoft Store 등 배포 채널 (제출 준비 문서 이미 있음)
+> **Roadmap labeling rule:** In marketing materials, 🔮 items must always be marked "Coming soon / Roadmap". Enterprise contracts must not include future features as binding commitments. Presenting unreleased features as current creates trust and legal risk.
 
 ---
 
-## 7. 세일즈 자료 구성
+## 6. GTM Execution Plan by Phase
 
-**피치 흐름 (5분 데모)**
-1. 문제: "에이전트는 빨라졌는데, 사람이 병목이다" — 창 전환, 충돌, 대기
-2. 데모: 에이전트 4개 동시 실행 → 자동 워크트리 → 상태 표시
-3. 데모: 노트북 닫기 → 휴대폰에서 대기 중인 에이전트 승인
-4. 데모: 원격 GPU 서버를 포트 개방 없이 연결
-5. 로드맵: 팀 대시보드·정책·감사 로그 🔮 → "같이 설계할 파트너를 찾고 있습니다"
+### Phase 0 — Preparation (2–4 weeks)
+- **Build evidence:** publish a benchmark against Orca, cmux, and Warp for memory, startup time, and 8 agents running concurrently (with reproduction scripts)
+- **Site cleanup:** 30-second demo video (4 agents in parallel → close laptop → approve on phone), comparison page, privacy statement page, public roadmap
+- Publish a **headless Linux server guide** (the feature exists but is not known)
+- **Instrumentation:** install → first agent run → first worktree → first remote pairing funnel (opt-in, anonymous)
 
-**반론 대응**
-| 반론 | 답변 |
+### Phase 1 — Community launch (1–3 months) · Goal: acquire individual users
+- **Show HN** (title per skills/channel-post.md), qualifying subreddits (r/ClaudeAI, etc.). Product Hunt is postponed until there is a following (launch-7day.md)
+- **Ride the agent ecosystem:** expose Ferryx naturally in Claude Code/Codex tips content. Search-traffic articles such as "Guide to running Claude Code in parallel"
+- **Target the Korean market at the same time:** Threads, GeekNews, Discord communities. Build-in-public with the developer personally sharing the build process
+- **Creators:** reach out to AI coding YouTubers/streamers. Promise a free 1-year Pro code when payments open (Pro not currently on sale)
+- **Open Discord:** bug reports and feature voting → publicly reflected in the roadmap
+
+### Phase 2 — Monetization (3–6 months) · Goal: validate Pro conversion
+- Open Pro alongside the managed relay and push notification launch
+- In-app upsell points: when adding a third remote server, when connecting from a phone on an external network for the first time
+- 5 user case studies (indie hacker, ML engineer, startup CTO)
+
+### Phase 3 — Team expansion (6–12 months) · Goal: bottom-up → team contracts
+- **PLG signal:** 3+ users with the same company email domain → sales outreach
+- Team plan 14-day free trial, self-serve payment
+- Co-design the team dashboard and policy engine with 5 design-partner teams (validate by pre-selling roadmap features)
+- Security review materials: data flow diagram, what data the relay can/cannot see, SOC 2 roadmap
+
+### Phase 4 — Enterprise (after 12 months)
+- Enterprise with self-hosting, SSO, audit logs
+- Partners: AI adoption consultancies, cloud marketplaces (AWS/Azure)
+- Distribution channels such as the Microsoft Store (submission prep document already exists)
+
+---
+
+## 7. Sales Materials
+
+**Pitch flow (5-minute demo)**
+1. Problem: "Agents got fast, but the human is the bottleneck" — window switching, conflicts, waiting
+2. Demo: 4 agents running concurrently → automatic worktrees → status display
+3. Demo: close laptop → approve a waiting agent from the phone
+4. Demo: connect a remote GPU server without opening ports
+5. Roadmap: team dashboard, policies, audit logs 🔮 → "We're looking for partners to design this with"
+
+**Handling objections**
+| Objection | Response |
 |---|---|
-| "tmux로 충분하다" | tmux는 세션만 유지한다. 워크트리, 에이전트 상태, 모바일 지휘는 직접 만들어야 한다 |
-| "Claude Code가 이미 병렬 기능을 넣고 있다" | Ferryx는 특정 회사에 묶이지 않는다. Codex·OpenCode를 섞어 쓰는 팀에 맞다 |
-| "릴레이로 코드가 나가지 않나?" | 가능하면 직접 연결(QUIC)을 쓰고, 자체 호스팅 릴레이는 누구나 무료다. 데이터 흐름 문서는 공개 예정 🔮 |
-| "작은 팀이 만든 제품이라 불안하다" | 소스 공개, 공개 로드맵, 데몬 무중단 교체 등 안정성 기록 공개 |
+| "tmux is enough" | tmux only keeps sessions alive. Worktrees, agent status, and mobile control you have to build yourself |
+| "Claude Code is already adding parallel features" | Ferryx is not tied to a specific company. It fits teams that mix Codex and OpenCode |
+| "Doesn't code leave through the relay?" | Direct connection (QUIC) is used when possible, and the self-hosted relay is free for everyone. Data flow documentation to be published 🔮 |
+| "A product from a small team feels risky" | Source available, public roadmap, published stability record such as zero-downtime daemon replacement |
 
 ---
 
-## 8. 핵심 지표 (North Star와 보조 지표)
+## 8. Key Metrics (North Star and supporting metrics)
 
-> 아래 목표치는 모두 가설이다. 7일 루프 결과(metrics/)로 다시 잡는다. 전환율 3~5%는 [셀프 서브 프리미엄 기준](https://www.lennysnewsletter.com/p/what-is-a-good-free-to-paid-conversion)을 따랐다.
+> All targets below are hypotheses. They will be reset based on the 7-day loop results (metrics/). The 3–5% conversion rate follows the [self-serve freemium benchmark](https://www.lennysnewsletter.com/p/what-is-a-good-free-to-paid-conversion).
 
-- **North Star:** 주간 "병렬 에이전트 시간" — 에이전트 2개 이상이 동시에 실행된 시간의 합
-- 활성화: 설치 후 24시간 안에 에이전트 2개 이상 동시 실행 비율 (목표 40%)
-- 리텐션: 4주차 주간 활성 사용자 비율 (목표 35%)
-- 원격 채택: 모바일 또는 원격 서버를 연결한 사용자 비율
-- 수익: Free → Pro 전환율 (목표 3~5%), Team 도메인 신호 수
-- 12개월 목표(가설): 주간 활성 1만, Pro 유료 400명, Team 계약 10개
+- **North Star:** weekly "parallel agent hours" — total time during which 2+ agents ran concurrently
+- Activation: share of installs that run 2+ agents concurrently within 24 hours (target 40%)
+- Retention: week-4 weekly active user rate (target 35%)
+- Remote adoption: share of users who connected mobile or a remote server
+- Revenue: Free → Pro conversion rate (target 3–5%), number of Team domain signals
+- 12-month goals (hypothesis): 10K weekly actives, 400 paid Pro users, 10 Team contracts
 
 ---
 
-## 9. 리스크와 대응
+## 9. Risks and Responses
 
-| 리스크 | 대응 |
+| Risk | Response |
 |---|---|
-| 모델 회사가 병렬 실행·모바일을 자체 제공 | 벤더 중립 + 원격 서버 + 팀 정책 계층으로 차별화 |
-| 라이선스 변경에 대한 커뮤니티 반발 | 개인·소규모 무료 유지, 90일 유예, 기존 사용자 할인, 변경 이유를 공개 글로 설명 (4장) |
-| 자체 호스팅으로 과금 우회 | 앱 라이선스가 회사 규모 기준이라 릴레이를 직접 돌려도 큰 회사는 Team 이상 필요. 릴레이 자체는 무료 유지 |
-| 미래 기능 과대 마케팅 | 🔮 표기 의무화, 계약서에 미래 기능 약속 금지 |
-| 크로스플랫폼 품질 편차 (Design Mode는 macOS만) | 플랫폼별 기능 표를 사이트에 공개 |
-| 저장소 주소·문서 버전 불일치 (`ferryx/ferryx` vs `Indosaram/ferryx`, 프로토콜 v5/v6) | 런칭 전 정리 |
-| 1인/소규모 개발 지원 부담 | 디스코드 커뮤니티 지원, 유료 플랜만 우선 지원 |
+| Model companies ship parallel execution/mobile themselves | Differentiate with vendor neutrality + remote servers + team policy layer |
+| Community backlash to the license change | Keep individuals/small companies free, 90-day grace period, discount for existing users, explain the reasons in a public post (Section 4) |
+| Billing circumvention via self-hosting | The app license is based on company size, so large companies need Team or higher even if they run their own relay. The relay itself stays free |
+| Overmarketing future features | Mandatory 🔮 labeling, no future-feature commitments in contracts |
+| Cross-platform quality gaps (Design Mode is macOS only) | Publish a per-platform feature table on the site |
+| Inconsistent repository URL / doc versions (`ferryx/ferryx` vs `Indosaram/ferryx`, protocol v5/v6) | Clean up before launch |
+| Support burden for a solo/small team | Discord community support, priority support for paid plans only |
 
 ---
 
-## 10. 다음 4주 할 일
+## 10. Next 4 Weeks
 
-0. 라이선스 변경 공지, CLA 워크플로 활성화 (가격표·라이선스 교체·CLA 문서는 완료, 4-4). 결제 오픈은 보류
-1. 비교 벤치마크 스크립트·결과 공개
-2. 30초 데모 영상 + 랜딩 페이지 메시지 교체
-3. 공개 로드맵 페이지 (Now/Next/Later, 🔮 표기)
-4. 헤드리스 서버 가이드 + 프라이버시 페이지
-5. Show HN·GeekNews 일정 확정 (Product Hunt는 팔로워 확보 후)
-6. Pro 대기자 명단 + Early Supporter 가격 공개
+0. License change announcement, activate the CLA workflow (pricing table, license replacement, and CLA documents are done, 4-4). Opening payments is on hold
+1. Publish comparison benchmark scripts and results
+2. 30-second demo video + replace landing page messaging
+3. Public roadmap page (Now/Next/Later, 🔮 labels)
+4. Headless server guide + privacy page
+5. Confirm Show HN / GeekNews schedule (Product Hunt after gaining followers)
+6. Pro waitlist + publish Early Supporter pricing
 
 ---
 
-## 11. 이번 주 GTM 루프와의 연결
+## 11. Link to This Week's GTM Loop
 
-이 전략의 Phase 0~1을 7일 동안 실제로 돌리는 절차가 [loop/LOOP.md](../loop/LOOP.md)이고, 9장 리스크와 [objections.md](objections.md)의 반론 목록이 루프의 입력이다. 런칭 카피 원칙: "open source" 대신 "source-available", 보장 표현 금지, 출시 전 기능은 "Coming soon".
+[loop/LOOP.md](../loop/LOOP.md) is the procedure for actually running Phases 0–1 of this strategy over 7 days, and the Section 9 risks and the objection list in [objections.md](objections.md) are the loop's inputs. Launch copy principles: "source-available" instead of "open source", no guarantee language, "Coming soon" for unreleased features.
 
-### 확인하지 못한 가정
-- 가격은 확정했지만 시장 검증 전이다. 지표 목표, 세그먼트 규모는 시장 조사 없이 세운 **가설**이다. 대기자 명단과 인터뷰 10~20건으로 검증이 필요하다.
-- 3-1 표의 스타·가격은 2026-10-24에 다시 확인했다. 2장·3-2의 사용자 불만 내용은 2026-09 내부 분석을 인용했고 다시 확인하지 않았다.
-- 현재 기능은 문서와 코드 구조로만 확인했고, 빌드·실행해 보지는 않았다.
+### Unverified assumptions
+- Prices are decided but not market-validated. Metric targets and segment sizes are **hypotheses** set without market research. They need validation through a waitlist and 10–20 interviews.
+- Stars and prices in the 3-1 table were rechecked on 2026-10-24. User complaints in Sections 2 and 3-2 cite the 2026-09 internal analysis and were not rechecked.
+- Current features were confirmed only from documentation and code structure; they were not built or run.

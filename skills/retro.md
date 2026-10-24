@@ -1,12 +1,12 @@
 # skill: retro
 
-목적: 중간 결과로 루프를 개선한다.
+Purpose: improve the loop using interim results.
 
-`log/day-N.md`에 아래를 쓴다.
+Write the following in `log/day-N.md`.
 
-1. 지표 (measure 결과 표)
-2. 한 일 (게시 URL, 수정 커밋)
-3. 들은 것 (listen 요약)
-4. 효과가 있었던 것 / 없었던 것 — 지표 근거와 함께
-5. 루프 변경: 내일 바꿀 것 하나 (채널, 메시지, 시간, 절차). 루프 절차를 바꿨으면 loop/CHANGELOG.md에도 기록.
-6. 다음 날 계획
+1. Metrics (measure results table)
+2. What we did (post URLs, fix commits)
+3. What we heard (listen summary)
+4. What worked / what didn't — with supporting metrics
+5. Loop changes: one thing to change tomorrow (channel, message, timing, procedure). If the loop procedure changed, also record it in loop/CHANGELOG.md.
+6. Plan for the next day

@@ -1,8 +1,8 @@
 # skill: reply
 
-목적: 게시 직후의 대화가 순위와 신뢰를 결정하므로, 6시간 동안 모든 댓글에 답한다.
+Purpose: the conversation right after posting decides ranking and trust, so answer every comment for 6 hours.
 
-- 답변은 사람이 쓴다. 에이전트는 질문의 사실 확인(코드·문서 위치)과 초안만 만든다.
-- 비판에는 방어하지 않고 사실로 답한다. 맞는 지적이면 인정하고 objections.md에 추가.
-- 투표 요청, 다른 계정 동원 금지.
-- 반복되는 질문은 README FAQ로 옮긴다.
+- A human writes the replies. Agents only fact-check questions (code and doc locations) and make drafts.
+- Answer criticism with facts, not defensiveness. If a point is valid, acknowledge it and add it to objections.md.
+- No asking for votes, no mobilizing other accounts.
+- Move recurring questions into the README FAQ.

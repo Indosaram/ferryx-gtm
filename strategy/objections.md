@@ -1,23 +1,23 @@
-# Ferryx를 쓰지 않을 이유 — 반론 목록과 대응 상태
+# Reasons not to use Ferryx — objection list and response status
 
-출시 전에 회의적인 개발자·CTO·보안 담당자 관점에서 작성했다. 매일 LISTEN 단계에서 실제 댓글을 매핑해 "등장"을 올리고, OBJECTION-FIX 단계에서 하나씩 줄인다.
-기준: Ferryx main 2026-10-24.
+Written before launch from the perspective of a skeptical developer, CTO, and security lead. Each day in the LISTEN step, map real comments here and increment "Seen"; in the OBJECTION-FIX step, reduce them one at a time.
+Baseline: Ferryx main 2026-10-24.
 
-| # | 반론 | 심각도 | 근거 (현재 사실) | 대응 계획 | 상태 | 등장 |
+| # | Objection | Severity | Evidence (current facts) | Response plan | Status | Seen |
 |---|---|---|---|---|---|---|
-| 1 | "세션을 맡기기 무섭다" — 과거 업데이트·강제 종료 때 세션 유실, 사이트는 "never lose work"를 보장 | 치명 | 사이트 카피와 README의 한계 서술이 서로 다름 | 보장 문구 삭제, 유실 사고와 구조 수정을 정직하게 공개하는 글 | 대기 | 0 |
-| 2 | "tmux + git worktree, 혹은 벤더 자체 기능이면 충분" | 치명 | Claude Code·Codex가 워크트리·원격 기능을 흡수 중 | 벤더 중립(16종 에이전트 혼용), 상태 감지·모바일·원격 서버를 한 제품에서 보여주는 데모 | 대기 | 0 |
-| 3 | "오픈소스가 아니다" | 높음 | Ferryx License 1.0 (source-available, 소규모 무료) | 게시물에 source-available 명시, "free and open" 문구 삭제 | 대기 | 0 |
-| 4 | "1인 프로젝트, 버스 팩터 1" | 높음 | 메인테이너 1인 | 공개 로드맵·변경 기록, Discord 응답 속도로 신뢰 확보 | 대기 | 0 |
-| 5 | "보안 검토 통과가 어렵다" | 높음 | 보안 문서(데이터 흐름·릴레이가 보는 범위) 미공개 | 보안 문서(데이터 흐름, 릴레이가 보는 것), 기본값 재검토 | 대기 | 0 |
-| 6 | "유료 플랜을 살 수 없다 / Free는 원격 1대" | 높음 | 결제 보류 | 대기 명단으로 수요 측정, Day 4에 20명 이상이면 결제 대행사(Paddle/Polar) 가입 심사 시작, 결제 오픈은 12월(launch-7day.md 90일 계획) | 진행 | 0 |
-| 7 | "설치가 번거롭다" | 높음 | Windows 미서명, x64만 배포 | SmartScreen 안내, 플랫폼 표 공개 | 진행 | 0 |
-| 8 | "내 레포에 .orca-worktrees, orca/* 브랜치가 생긴다" | 높음 | 레거시 이름 사용 | 이름 정리 계획 공개, 위치 설정 옵션 검토 | 대기 | 0 |
-| 9 | "기능과 개념이 너무 많다" | 중상 | 허브, 디자인 모드, DAG 뷰 등 | 첫 5분 경로만 보여주는 온보딩 GIF | 대기 | 0 |
-| 10 | "광고와 실제가 다르다" | 중상 | 사이트의 Gemini CLI·에이전트 11종·QR 페어링 표기가 코드와 불일치 | 런칭 전 카피 수정 | 대기 | 0 |
-| 11 | "메모리·디스크 비용" | 중간 | 측정 공개 없음 | 재현 가능한 벤치마크 스크립트 공개 | 대기 | 0 |
+| 1 | "I'm scared to trust it with my sessions" — sessions were lost during past updates and force-quits, yet the site guarantees "never lose work" | Critical | Site copy and the README's description of limitations contradict each other | Delete the guarantee wording; publish an honest post about the loss incidents and the structural fixes | Pending | 0 |
+| 2 | "tmux + git worktree, or the vendor's own features, are enough" | Critical | Claude Code and Codex are absorbing worktree and remote features | Demo showing vendor neutrality (mixing 16 agents), status detection, mobile, and remote servers in one product | Pending | 0 |
+| 3 | "It's not open source" | High | Ferryx License 1.0 (source-available, free for small use) | State source-available in posts, delete "free and open" wording | Pending | 0 |
+| 4 | "One-person project, bus factor 1" | High | 1 maintainer | Build trust via public roadmap/changelog and Discord response speed | Pending | 0 |
+| 5 | "Hard to pass security review" | High | Security doc (data flow, what the relay sees) not published | Security doc (data flow, what the relay sees), review defaults | Pending | 0 |
+| 6 | "Can't buy a paid plan / Free is limited to 1 remote" | High | Payments on hold | Measure demand via waitlist; if 20+ by Day 4, start payment provider (Paddle/Polar) signup review; payments open in December (launch-7day.md 90-day plan) | In progress | 0 |
+| 7 | "Installation is a hassle" | High | Windows unsigned, x64 builds only | SmartScreen notice, publish platform table | In progress | 0 |
+| 8 | "It creates .orca-worktrees and orca/* branches in my repo" | High | Uses legacy names | Publish renaming plan, consider a location setting option | Pending | 0 |
+| 9 | "Too many features and concepts" | Medium-high | Hub, design mode, DAG view, etc. | Onboarding GIF showing only the first-5-minutes path | Pending | 0 |
+| 10 | "The marketing doesn't match reality" | Medium-high | Site's Gemini CLI / 11 agents / QR pairing claims don't match the code | Fix copy before launch | Pending | 0 |
+| 11 | "Memory and disk cost" | Medium | No published measurements | Publish a reproducible benchmark script | Pending | 0 |
 
-## 대응 효과 기록
+## Response impact log
 
-| 날짜 | 반론 # | 한 일 (커밋/문서 URL) | 소재로 쓴 게시물 URL | 게시 후 24h 스타 증감 | 주요 referrer |
+| Date | Objection # | What was done (commit/doc URL) | Post URL that used it | Star change 24h after posting | Main referrer |
 |---|---|---|---|---|---|

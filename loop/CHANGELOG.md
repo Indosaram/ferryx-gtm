@@ -1,11 +1,11 @@
-# 루프 변경 기록
+# Loop changelog
 
-중간 결과를 보고 루프 자체를 바꾼 내역. 날짜, 근거 지표, 바꾼 것.
+Changes made to the loop itself based on interim results. Date, supporting metric, what changed.
 
-- 2026-10-24 v1: 최초 루프. 6단계(MEASURE, LISTEN, OBJECTION-FIX, SHIP, REPLY, RETRO).
-- 2026-10-24 v1.1 (근거: 1차 적대적 리뷰, 채널 규칙 조사)
-  - 다운로드 지표: 전체 2,692 중 2,199가 자동 업데이트 확인(latest.json), 100이 서명·체크섬 → 설치 파일만 센다(기준선 393).
-  - 대기 명단: 측정 수단이 없었음 → 이슈 #1을 대기 명단으로 사용.
-  - 역할 분리: HN·여러 서브레딧이 AI 생성 글 금지 → 본문·댓글은 사람이 쓴다.
-  - Show HN 전 필수 조건 추가: 공개 카피의 사실 불일치(QR, Gemini, 에이전트 수) 해소, 미완료 시 연기.
-  - 반론 대응 효과 기록 표 추가(어떤 대응이 유입을 만들었는지 비교).
+- 2026-10-24 v1: Initial loop. 6 steps (MEASURE, LISTEN, OBJECTION-FIX, SHIP, REPLY, RETRO).
+- 2026-10-24 v1.1 (basis: first adversarial review, channel rules research)
+  - Download metric: of 2,692 total, 2,199 were auto-update checks (latest.json) and 100 were signatures/checksums → count installers only (baseline 393).
+  - Waitlist: there was no way to measure it → use issue #1 as the waitlist.
+  - Role split: HN and several subreddits ban AI-generated posts → humans write posts and comments.
+  - Added a required precondition before Show HN: resolve factual mismatches in public copy (QR, Gemini, number of agents); postpone if not done.
+  - Added a table recording the effect of objection responses (to compare which responses drove traffic).

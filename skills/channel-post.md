@@ -1,14 +1,14 @@
 # skill: channel-post
 
-목적: 채널 규칙을 지키면서 오늘 채널에 맞는 게시물을 만든다.
+Purpose: create a post that fits today's channel while following the channel's rules.
 
-1. `strategy/launch-7day.md`에서 오늘 채널을 확인한다.
-2. `channels/rules.md`의 해당 채널 규칙을 다시 읽는다 (계정 조건, 자기 홍보 비율, 제목 형식).
-3. 에이전트는 각도별 소재(병렬 실행 / 세션 유지 / 원격 지휘 / 반론 대응)와 근거 링크만 정리한다. **본문은 사람이 직접 쓴다.**
-4. 사실 점검: 모든 기능 주장에 레포 근거가 있는지, 로드맵 항목이 현재 기능처럼 쓰였는지, 라이선스를 "open source"라고 쓰지 않았는지.
-5. 사람이 하나를 골라 직접 게시한다. 게시 URL과 시간을 log에 기록.
+1. Check today's channel in `strategy/launch-7day.md`.
+2. Reread that channel's rules in `channels/rules.md` (account requirements, self-promotion ratio, title format).
+3. The agent only gathers material by angle (parallel runs / session persistence / remote control / objection response) and evidence links. **A human writes the text personally.**
+4. Fact check: every feature claim has evidence in the repo, no roadmap item is written as a current feature, and the license is not called "open source".
+5. A human picks one and posts it personally. Record the post URL and time in the log.
 
-채널별 기본 형식:
-- Show HN: `Show HN: Ferryx – run many coding agents in parallel, each in its own git worktree`. 제목에 라이선스 용어를 넣지 않고, 본문 첫 문단에 만든 이유·한계·라이선스(source-available)를 적는다. 회원가입 없이 바로 써볼 수 있는 다운로드 링크.
-- Reddit: 본문에 데모 GIF, 만든 사람임을 밝힘, 질문으로 끝맺음.
-- GeekNews: Show GN으로만 등록(자기 제품). 제목은 "프로젝트명 - 핵심 기능", 동기·수치는 본문에.
+Default format per channel:
+- Show HN: `Show HN: Ferryx – run many coding agents in parallel, each in its own git worktree`. Keep license terms out of the title; in the first paragraph of the text, state why it was built, its limits and the license (source-available). Include a download link that can be tried right away without signup.
+- Reddit: demo GIF in the text, disclose that you are the maker, end with a question.
+- GeekNews: post only as Show GN (own product). Title is "Project name - core feature"; motivation and numbers go in the text.

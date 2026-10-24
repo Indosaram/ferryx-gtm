@@ -1,26 +1,26 @@
 # Day N — YYYY-MM-DD
 
-## 지표
-(skills/measure.md 표: 스타, 순방문자, 설치 다운로드, Discord, 대기 명단, 외부 게시물. 전날 대비, 목표 대비 %)
+## Metrics
+(skills/measure.md table: stars, unique visitors, installer downloads, Discord, waitlist, external posts. Change from previous day, % of goal)
 
-## 한 일
-| 시간 (KST) | 행동 | URL / 커밋 |
+## What we did
+| Time (KST) | Action | URL / commit |
 |---|---|---|
 
-## 들은 것
-(OBJECTION / REQUEST / PRAISE / BUG, 원문 링크)
+## What we heard
+(OBJECTION / REQUEST / PRAISE / BUG, link to original)
 
-## 효과 있었던 것 / 없었던 것
-(지표 근거와 함께)
+## What worked / what didn't
+(with supporting metrics)
 
-## 판단 규칙 점검
-| 규칙 (launch-7day.md) | 발동 여부 | 근거 수치 | 조치 |
+## Decision rule check
+| Rule (launch-7day.md) | Triggered? | Supporting numbers | Action |
 |---|---|---|---|
-| HN 첫 페이지 실패 시 새 각도로 재도전 | | | |
-| (10/27 이후) 하루 스타 +20 미만 2일 연속 → 헤드라인 교체 | | | |
-| Day 4 대기 명단 20명 이상 → 결제 대행사 가입 심사 시작 | | | |
+| If HN front page fails, retry with a new angle | | | |
+| (After 10/27) Under +20 stars/day for 2 consecutive days → replace headline | | | |
+| Day 4 waitlist at 20 or more → start payment provider application review | | | |
 
-## 루프 변경
-(내일 바꿀 것 하나. 절차를 바꾸면 loop/CHANGELOG.md에도)
+## Loop changes
+(One thing to change tomorrow. If the procedure changes, also record it in loop/CHANGELOG.md)
 
-## 내일
+## Tomorrow

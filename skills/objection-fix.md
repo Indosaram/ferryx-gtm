@@ -1,13 +1,13 @@
 # skill: objection-fix
 
-목적: 반대 이유 하나를 실제로 줄이고, 그 과정을 신뢰를 쌓는 콘텐츠로 바꾼다.
+Purpose: actually reduce one objection, and turn that process into content that builds trust.
 
-1. `strategy/objections.md`에서 (등장 횟수 × 심각도)가 가장 큰 미해결 항목 1개를 고른다.
-2. 하루 안에 할 수 있는 대응 중 하나를 고른다:
-   - 고친다: 작은 버그 수정, 카피 수정, 문서 추가.
-   - 증명한다: 측정 스크립트와 결과 공개.
-   - 인정한다: 한계와 계획을 문서에 명시.
-3. 대응 결과(커밋, 문서, 측정치) 링크를 objections.md에 적고 상태를 갱신. 그 대응을 소재로 한 게시물 URL과 게시 후 24시간 스타·referrer 증감도 적어, 어떤 반론 대응이 유입을 만들었는지 retro에서 비교한다.
-4. 콘텐츠 각도 한 줄을 만든다: "X라는 지적을 받고 오늘 Y를 했다. 남은 한계는 Z."
+1. From `strategy/objections.md`, pick the 1 unresolved item with the highest (count × severity).
+2. Pick one response that can be done within a day:
+   - Fix it: small bug fix, copy fix, added docs.
+   - Prove it: publish a measurement script and results.
+   - Acknowledge it: state the limits and plan in the docs.
+3. Write links to the response (commit, doc, measurements) in objections.md and update the status. Also record the URL of the post built on that response and the change in stars and referrers over the 24 hours after posting, so retro can compare which objection responses drove traffic.
+4. Write a one-line content angle: "We were told X, so today we did Y. The remaining limit is Z."
 
-출력: objections.md 갱신, 오늘 SHIP 단계의 소재 1개.
+Output: updated objections.md, 1 piece of material for today's SHIP step.
