@@ -1,0 +1,28 @@
+{
+  "capturedAt": "2026-10-24T08:07:58.118Z",
+  "repo": "Indosaram/ferryx",
+  "stars": 17,
+  "forks": 4,
+  "watchers": 1,
+  "views14d": {
+    "count": 22,
+    "uniques": 11
+  },
+  "clones14d": {
+    "count": 1741,
+    "uniques": 319
+  },
+  "referrers": [
+    {
+      "referrer": "github.com",
+      "count": 3,
+      "uniques": 3
+    }
+  ],
+  "releaseDownloadsTotal": 2692,
+  "manual": {
+    "discordMembers": null,
+    "waitlist": null,
+    "externalPosts": []
+  }
+}
