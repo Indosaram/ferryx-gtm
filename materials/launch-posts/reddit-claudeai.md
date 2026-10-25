@@ -1,9 +1,9 @@
 # r/ClaudeAI
 
 - Needs more than 50 karma.
-- The rule requires explaining how Claude helped. Confirm the "built with Claude Code" line is true before posting.
+- "How Claude helped" is based on commit trailers (252 commits co-authored by the omo agent). If you want to name Claude Code specifically, confirm it is true first.
 
-**Submit link:** https://www.reddit.com/r/ClaudeAI/submit?type=self&title=I%20built%20Ferryx%20to%20run%20Claude%20Code%20(and%20Codex)%20in%20parallel%2C%20each%20in%20its%20own%20git%20worktree&text=I'm%20the%20developer%20of%20Ferryx.%20Disclosure%20up%20front%3A%20it's%20my%20project.%0A%0AI%20run%20Claude%20Code%20for%20most%20of%20my%20work%2C%20often%20two%20or%20three%20sessions%20on%20the%20same%20repo.%20They%20kept%20colliding%20in%20one%20checkout%2C%20and%20closing%20the%20terminal%20app%20killed%20long%20runs.%20Ferryx%20gives%20each%20session%20its%20own%20git%20worktree%20and%20branch%2C%20and%20a%20background%20Rust%20daemon%20owns%20the%20terminals%2C%20so%20closing%20or%20crashing%20the%20window%20doesn't%20stop%20Claude.%20You%20get%20a%20badge%20and%20a%20notification%20when%20a%20session%20is%20waiting%20for%20your%20input%2C%20and%20you%20can%20check%20in%20from%20your%20phone%20by%20signing%20in%20to%20your%20account%20there.%0A%0AHow%20Claude%20helped%3A%20much%20of%20Ferryx%20itself%20was%20built%20with%20Claude%20Code%20running%20in%20Ferryx%2C%20several%20sessions%20at%20once%20in%20separate%20worktrees.%0A%0AFree%20to%20try%3A%20no%20signup%20needed%20to%20download%2C%20and%20it's%20free%20for%20individuals.%20It's%20source-available%20rather%20than%20open%20source.%20Builds%20are%20for%20macOS%2C%20Windows%20(unsigned%20for%20now)%20and%20Linux%20x64.%0A%0Ahttps%3A%2F%2Fgithub.com%2FIndosaram%2Fferryx%0A%0AFor%20people%20already%20running%20several%20Claude%20Code%20sessions%3A%20how%20do%20you%20keep%20them%20apart%20today%3F
+**Submit link:** https://www.reddit.com/r/ClaudeAI/submit?type=self&title=I%20built%20Ferryx%20to%20run%20Claude%20Code%20(and%20Codex)%20in%20parallel%2C%20each%20in%20its%20own%20git%20worktree&text=Disclosure%3A%20I%20made%20this.%0A%0AI%20usually%20have%20two%20or%20three%20Claude%20Code%20sessions%20going%20on%20the%20same%20repo.%20They%20kept%20editing%20the%20same%20files%20in%20one%20checkout%2C%20and%20if%20I%20closed%20the%20terminal%20app%20the%20sessions%20died%20with%20it.%0A%0AFerryx%20gives%20each%20session%20its%20own%20git%20worktree%20and%20branch.%20The%20terminals%20belong%20to%20a%20background%20daemon%20instead%20of%20the%20window%2C%20so%20closing%20the%20app%20doesn't%20stop%20Claude%2C%20and%20you%20see%20what%20you%20missed%20when%20you%20reopen%20it.%20It%20shows%20which%20session%20is%20waiting%20on%20you%20and%20notifies%20you.%20You%20can%20also%20check%20in%20from%20your%20phone%20by%20signing%20in%20there.%0A%0AHow%20Claude%20helped%3A%20most%20of%20Ferryx%20was%20written%20by%20AI%20coding%20agents%20running%20inside%20Ferryx%20itself%2C%20several%20at%20a%20time%20in%20separate%20worktrees.%0A%0AIt's%20free%20for%20individuals%20and%20needs%20no%20signup%20to%20download.%20It's%20source-available%2C%20not%20open%20source.%20macOS%2C%20Windows%20(unsigned%20for%20now)%20and%20Linux%20x64.%0A%0Ahttps%3A%2F%2Fgithub.com%2FIndosaram%2Fferryx%0A%0AIf%20you%20run%20several%20Claude%20Code%20sessions%20at%20once%2C%20how%20do%20you%20keep%20them%20apart%20now%3F
 
 ---
 
@@ -13,14 +13,16 @@ I built Ferryx to run Claude Code (and Codex) in parallel, each in its own git w
 
 Body:
 
-I'm the developer of Ferryx. Disclosure up front: it's my project.
+Disclosure: I made this.
 
-I run Claude Code for most of my work, often two or three sessions on the same repo. They kept colliding in one checkout, and closing the terminal app killed long runs. Ferryx gives each session its own git worktree and branch, and a background Rust daemon owns the terminals, so closing or crashing the window doesn't stop Claude. You get a badge and a notification when a session is waiting for your input, and you can check in from your phone by signing in to your account there.
+I usually have two or three Claude Code sessions going on the same repo. They kept editing the same files in one checkout, and if I closed the terminal app the sessions died with it.
 
-How Claude helped: much of Ferryx itself was built with Claude Code running in Ferryx, several sessions at once in separate worktrees.
+Ferryx gives each session its own git worktree and branch. The terminals belong to a background daemon instead of the window, so closing the app doesn't stop Claude, and you see what you missed when you reopen it. It shows which session is waiting on you and notifies you. You can also check in from your phone by signing in there.
 
-Free to try: no signup needed to download, and it's free for individuals. It's source-available rather than open source. Builds are for macOS, Windows (unsigned for now) and Linux x64.
+How Claude helped: most of Ferryx was written by AI coding agents running inside Ferryx itself, several at a time in separate worktrees.
+
+It's free for individuals and needs no signup to download. It's source-available, not open source. macOS, Windows (unsigned for now) and Linux x64.
 
 https://github.com/Indosaram/ferryx
 
-For people already running several Claude Code sessions: how do you keep them apart today?
+If you run several Claude Code sessions at once, how do you keep them apart now?
