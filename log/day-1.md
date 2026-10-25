@@ -44,6 +44,11 @@ Interpretation: no inbound channel has opened yet; downloads grow only from exis
 
 ## Tomorrow
 
+- Account check 23:00 (Maho browser):
+  - Reddit u/LumpSumPorsche: logged in via Google in Maho. Karma 99, account age 5 years. r/ClaudeAI (>50 karma) OK.
+  - GeekNews freedomzero: karma 25, joined 2021-07-21, has posted Show GN before. Eligible. Maho is logged out and autofill did not fill the saved password; owner logs in once.
+  - HN: no existing account found (checked indosaram, indo_yoon, indoyoon, goethedev, freedomzero91, indo). Maho logged out. An account is needed before 10/26 22:00 KST.
+
 - Decision 22:20 (owner): keep "16 agents" on the site; a new app release from main ships before Show HN. If it slips past 10/26 22:00 KST, the Show HN text must not claim 16.
 - Show HN readiness checked 22:20: all four installer links (dmg, exe, AppImage, deb) return 200 and install.sh is live; account enrollment status is fetched non-blocking (`.catch(() => null)` in App.tsx), so the app runs without signup.
 - The 10/24 list submissions (awesome-claude-code, Terminal Trove, Console.dev) show no trace; confirm or do them.
