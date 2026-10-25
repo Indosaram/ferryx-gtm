@@ -5,7 +5,7 @@ Premise: we have almost no existing followers or influence. Stars come only from
 | Date (KST) | To do |
 |---|---|
 | 10/24 (Sat) | Measure baseline, publish waitlist (issue #1), README demo GIF, Windows SmartScreen notice, check HN/Reddit/GeekNews account requirements, submit to awesome-claude-code/Terminal Trove/Console.dev, contact creators, request Lobsters invite |
-| 10/24~25 **Required before Show HN** | Resolve objection #10: remove QR wording from the Ferryx README and site ("6-digit PIN pairing"), Gemini CLI → Antigravity, unify agent count at 16, delete "never lose work" and "free and open" wording. Record commit links in objections.md. **If not done, postpone Show HN** |
+| 10/24~25 **Required before Show HN** | Resolve objection #10: remove QR and PIN pairing wording from the Ferryx README and site (pairing is account sign-in + enrollment code; PIN/QR was retired 2026-09-25), Gemini CLI → Antigravity, unify agent count at 16, delete "never lose work" and "free and open" wording. Record commit links in objections.md. **If not done, postpone Show HN** |
 | 10/25 (Sun) | Early release in Asia: GeekNews Show GN (only if the account is at least 1 week old), Korean dev communities, Threads, Qiita/Zenn, V2EX. Early stars from here are the base for GitHub Trending |
 | 10/26 (Mon) | 22:00 KST Show HN (9 AM US Eastern, 13:00 UTC). Post body and comments written by a human. Reply to every comment for the next 6 hours. Reddit only in subs whose requirements we meet, such as r/ClaudeAI, 1 hour apart |
 | 10/27~29 | Ship hotfixes addressing objections, retry a regular HN post with a benchmark post or technical post |

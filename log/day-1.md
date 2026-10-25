@@ -1,0 +1,39 @@
+# Day 1 — 2026-10-25 (Sun)
+
+## Metrics (10:37 KST)
+
+| Metric | Day 0 | Day 1 | Change | Goal | % of goal |
+|---|---|---|---|---|---|
+| Stars | 17 | 17 | 0 | 300 | 0% |
+| 14-day unique visitors | 11 | 11 | 0 | 1,500 | 0% |
+| Installer downloads (cumulative) | 393 | 406 | +13 | +600 | 2.2% |
+| Discord members | 2 | 2 | 0 | 50 | 0% |
+| Waitlist (issue #1) | 0 | 0 | 0 | 40 | 0% |
+| External posts / mentions | 0 | 0 | 0 | 10 | 0% |
+
+Other: 14-day clones 1,693 / 340 unique (Day 0: 1,741 / 319). Referrers: github.com 3 (unchanged).
+
+Interpretation: no inbound channel has opened yet; downloads grow only from existing users and auto-discovery. Nothing has been posted since the baseline, so Day 1 results depend entirely on today's SHIP CONTENT step.
+
+## What we did
+| Time (KST) | Action | URL / commit |
+|---|---|---|
+| 10:37 | MEASURE: metrics/day-1.json | |
+| 22:00 | OBJECTION-FIX #10: verified copy against code. Agent count (16) and Gemini CLI were already fixed 10/24; removed the retired PIN/QR pairing copy from 24 site files. Show HN precondition met | [ferryx@1fa4a6e6](https://github.com/Indosaram/ferryx/commit/1fa4a6e6) |
+
+## What we heard
+
+## What worked / what didn't
+
+## Decision rule check
+| Rule (launch-7day.md) | Triggered? | Supporting numbers | Action |
+|---|---|---|---|
+| If HN front page fails, retry with a new angle | | | |
+| (After 10/27) Under +20 stars/day for 2 consecutive days → replace headline | | | |
+| Day 4 waitlist at 20 or more → start payment provider application review | | | |
+
+## Loop changes
+
+- The 10/24 objection #10 note itself was wrong (it prescribed "6-digit PIN pairing", which had already been retired). Rule: verify objection evidence against the current code, not against the strategy doc, before fixing copy.
+
+## Tomorrow
