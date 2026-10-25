@@ -42,6 +42,7 @@ Interpretation: no inbound channel has opened yet; downloads grow only from exis
 
 ## Tomorrow
 
-- Before 10/26 22:00 KST: decide between cutting a release from main or stating "11 in release, 16 on main" in the Show HN text.
+- Decision 22:20 (owner): keep "16 agents" on the site; a new app release from main ships before Show HN. If it slips past 10/26 22:00 KST, the Show HN text must not claim 16.
+- Show HN readiness checked 22:20: all four installer links (dmg, exe, AppImage, deb) return 200 and install.sh is live; account enrollment status is fetched non-blocking (`.catch(() => null)` in App.tsx), so the app runs without signup.
 - The 10/24 list submissions (awesome-claude-code, Terminal Trove, Console.dev) show no trace; confirm or do them.
 - Asia early release posts (GeekNews/Threads) were not posted on 10/25; human-written posts only.
