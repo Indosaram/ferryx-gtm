@@ -38,6 +38,8 @@ Interpretation: no inbound channel has opened yet; downloads grow only from exis
 
 ## Loop changes
 
+- 22:35 Re-verified every objection against ferryx main. #1 guarantee copy, #5 security doc and #8 naming were already done on 10/24~25 but still marked Pending; statuses updated with commit links. Still open: #2 (demo), #9 (onboarding GIF, none exists), #11 (benchmark, scheduled 10/27~29).
+
 - The 10/24 objection #10 note itself was wrong (it prescribed "6-digit PIN pairing", which had already been retired). Rule: verify objection evidence against the current code, not against the strategy doc, before fixing copy.
 
 ## Tomorrow
