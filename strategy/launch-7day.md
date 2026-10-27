@@ -11,6 +11,22 @@ Premise: we have almost no existing followers or influence. Stars come only from
 | 10/27~29 | Ship hotfixes addressing objections, retry a regular HN post with a benchmark post or technical post |
 | 10/30~31 | Share newsletter/list mentions, retrospective post, final measurement |
 
+## Revision 10/27 (after HN account hit)
+
+What happened: on 10/27 three karma comments from `osbull` (karma 1, dormant since July) went up within 53 seconds on three AI threads. Two were `[flagged]` by users and one was `[dead]` within minutes. Show HN did not go out on 10/26. A mail asking about the account was sent to hn@ycombinator.com.
+
+New order:
+1. **GeekNews Show GN: post now.** `freedomzero` has 25 karma, prior Show GN posts (last 2026-03), and a live comment from 10/27. No warm-up needed. Form is prefilled in Maho.
+2. **Reddit: 2 days of normal activity, then post.** `u/LumpSumPorsche` (99 karma, 5 years old) was idle for months. A dormant account that suddenly posts its own project gets caught by spam filters the same way `osbull` did. 10/27~28: upvotes and a few real comments in r/ClaudeAI and r/ClaudeCode. Post the r/ClaudeAI showcase on 10/29 around 22:00~23:00 KST (US morning).
+3. **HN: wait for the mod reply.** If cleared by 10/29, Show HN on 10/30 22:00 KST. If not, skip HN this week and do not open a new account (new accounts get killed the same way, and evading a ban gets the domain penalized).
+
+Activity rules (all accounts):
+- At most 2~3 comments per account per day, at least 1~2 hours apart.
+- Before the next comment, check the previous one is still visible when logged out.
+- Comment only where there is something specific to say. No links to ferryx in warm-up comments.
+- Upvote only posts that are actually good. No upvote trading, no asking anyone to upvote (r/ClaudeAI rule 10, HN guidelines).
+- Every comment gets a Jev check and a separate AI-tell review, and the owner approves the exact text before it is posted.
+
 ## Mid-course decision rules
 
 - If Show HN has not reached the front page by 10/27 01:00: leave the same post as is (no reposting), and retry on 10/28~29 with a new post from a different angle (benchmark, technical post on "8 agents in parallel").
