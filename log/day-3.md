@@ -13,3 +13,8 @@
 
 ## Decision
 - Hold Show HN until HN replies about osbull. Per the mid-course rule, retry window is 10/28~29.
+
+## Activity log 10/27 (u/LumpSumPorsche)
+- Upvoted (confirmed on /upvoted): Kanzo (r/ClaudeCode), Civic head unit firmware (r/ClaudeCode).
+- Tried, not applied: sky camera, Valheim mod (r/ClaudeAI). Not retried, to keep the pace slow.
+- Comment draft for Kanzo passed Jev (0.28) and AI-tell review (PASS). Waiting for owner approval before posting.
