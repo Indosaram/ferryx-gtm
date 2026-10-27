@@ -18,3 +18,4 @@
 - Upvoted (confirmed on /upvoted): Kanzo (r/ClaudeCode), Civic head unit firmware (r/ClaudeCode).
 - Tried, not applied: sky camera, Valheim mod (r/ClaudeAI). Not retried, to keep the pace slow.
 - Comment draft for Kanzo passed Jev (0.28) and AI-tell review (PASS). Waiting for owner approval before posting.
+- Kanzo comment posted 2026-10-27T07:32:48.073Z after owner approval (short version). Logged-out check: NOT visible logged-out.
