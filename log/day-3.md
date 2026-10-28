@@ -25,3 +25,4 @@
 ## X (10/28)
 - 2026-10-28T00:58:35.892Z posted intro/"say hi" post on @indo_yoon after owner said "넣고 발행까지해". Profile post count 39 -> 40, post shows once on profile. Maho's X tab was on @maho_browser; switched to @indo_yoon via account switcher before posting. First Post click hit a Cloudflare challenge and did not post; second click posted.
 - Owner should reply to every reply for 2~3h.
+- 2026-10-28T09:03:54.784Z X intro post after 8h: 125 views, 12 replies, 6 likes. Owner replied to most. @indo_yoon followers 2 -> 11. GH 17★/4 forks (no change). HN mod reply: none yet. Reddit: OP allmudi replied "sure! Feedback are appreciated" to follow-up.
