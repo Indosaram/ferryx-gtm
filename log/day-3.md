@@ -21,3 +21,7 @@
 - Kanzo comment posted 2026-10-27T07:32:48.073Z after owner approval (short version). Visible on own profile. Logged-out check inconclusive: Reddit serves a block page (403 / "Welcome to Reddit") to unauthenticated requests from this machine, so the earlier "not visible" result was invalid. Re-check from another network or a second account.
 - Kanzo comment confirmed visible: OP allmudi replied ~1h later (SQLite transaction per claim). Thread now 26 comments.
 - 2026-10-27T10:24:35.028Z follow-up reply to allmudi posted after owner approval ("nice, so the claim is atomic..."). On profile. Reddit comments today: 2. Next comment no earlier than ~2h.
+
+## X (10/28)
+- 2026-10-28T00:58:35.892Z posted intro/"say hi" post on @indo_yoon after owner said "넣고 발행까지해". Profile post count 39 -> 40, post shows once on profile. Maho's X tab was on @maho_browser; switched to @indo_yoon via account switcher before posting. First Post click hit a Cloudflare challenge and did not post; second click posted.
+- Owner should reply to every reply for 2~3h.
