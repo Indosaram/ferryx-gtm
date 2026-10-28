@@ -8,6 +8,8 @@ Legend: ✅ available now · 🟡 partially implemented / not wired up · 🔮 f
 
 ## 1. Positioning
 
+> **Superseded 2026-10-28 by [`positioning.md`](positioning.md).** The worktree-first and "Agent Operations Workspace" framing below made Ferryx read as a smaller Orca. Kept for history.
+
 **One-line definition**
 > Ferryx is a native workspace for running multiple AI coding agents side by side on one screen, and for continuing to direct them from your phone after you close your laptop.
 

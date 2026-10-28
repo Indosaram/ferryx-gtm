@@ -17,6 +17,13 @@ Baseline: Ferryx main 2026-10-24.
 | 10 | "The marketing doesn't match reality" | Medium-high | Site's Gemini CLI / 11 agents / QR+PIN pairing claims didn't match the code (PIN/QR control was retired 2026-09-25; pairing is account sign-in + enrollment code) | Fix copy before launch | Done (2026-10-25) | 0 |
 | 11 | "Memory and disk cost" | Medium | No published measurements | Publish a reproducible benchmark script | Pending | 0 |
 
+### #12. "The site sells a feature I can't download" (opened 2026-10-28)
+
+- **Fact:** ferryx.dev's hero ("Parallel agents, supervised your way") and the main-branch README lead with the supervisor that "answers routine prompts the way you would." The released build v2026.10.11.1 (10/11) has no agent_control/supervisor code: it first landed on main on 10/21 and is default-off since 1fc72124 (10/25).
+- **Risk:** visitors from GN/HN/Reddit download the release and can't find the headline feature.
+- **Response:** either ship a release containing the supervisor, or change the site hero and README headline to the positioning line (cmux-like, Windows/Linux, agents survive quit, no-SSH remote) until it ships. Launch posts already avoid the supervisor.
+- **Status:** open. Owner decision needed: release first, or headline first.
+
 ## Response impact log
 
 | Date | Objection # | What was done (commit/doc URL) | Post URL that used it | Star change 24h after posting | Main referrer |

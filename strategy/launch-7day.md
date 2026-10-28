@@ -37,6 +37,18 @@ Activity rules (all accounts):
 
 Phase 0 in GTM.md (2~4 weeks: benchmarks, demo, guide) is originally a pre-launch stage. This time it was shortened because of the 7-day competition period. Only the copy cleanup (objection #10) is finished before Show HN; the benchmark (objection #11) and session persistence measurement (objection #1) move to material for the 10/27~29 retry posts.
 
+## Revision 10/28: positioning reset
+
+Why: the 10/28 X intro post described Ferryx as "a terminal for running Claude Code, Codex & co in parallel," and readers were confused. Leading with worktrees makes Ferryx a smaller Orca. Calling it "just a multiplexer" makes it cmux. Neither framing answers "why not the free one?" New positioning: `strategy/positioning.md`.
+
+- **One line:** a native terminal for coding agents, like cmux but on Windows and Linux too. Agents keep running when you close the app, and remote boxes connect without SSH.
+- **All 5 launch posts rewritten** to this line. Worktrees are now one supporting sentence. The supervisor is not mentioned, because the 10/11 release doesn't have it.
+- **Show GN:** post the new copy (Maho tab refilled 10/28). Do not post the old copy: same-project reposts are blocked for a period.
+- **X:** do not repost the intro. Pin a short reply under the 10/28 post with the one-liner. Post the launch tweet (`x.md`) the same day as Show GN.
+- **r/ClaudeAI 10/29:** use the new `reddit-claudeai.md`. The tab 9 prefill holds the OLD title, so refill it before posting.
+- **Comment targeting changes:** prefer threads where people ask for cmux on Linux/Windows, complain that sessions die on quit, or complain about Electron weight. Answer the question first. Mention Ferryx only if it fits, and say you made it.
+- **Before HN (if the mod clears osbull):** fix the ferryx.dev hero and README headline, which lead with the supervisor (objection #12). HN readers will click through, and a headline about an unreleased feature will sink the thread.
+
 ## Expectations (empirical estimate, unverified)
 
 - 7-day stars: 300~2,000. 10,000 is under 1%.
