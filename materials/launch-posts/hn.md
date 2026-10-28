@@ -16,7 +16,7 @@ URL: https://github.com/Indosaram/ferryx
 
 Text (first comment right after submitting):
 
-Ferryx is a desktop terminal for running a bunch of coding agents (Claude Code, Codex, OpenCode, etc.) in tabs and splits. Think cmux, but cmux is macOS-only and I wanted the same thing on Linux and Windows.
+Ferryx is a desktop terminal for running a bunch of coding agents (Claude Code, Codex, OpenCode, etc.) in tabs and splits. It runs on macOS, Linux and Windows.
 
 Two things it does that I couldn't get elsewhere:
 
@@ -29,4 +29,4 @@ Caveats: source-available, not open source (free for individuals and small compa
 
 https://github.com/Indosaram/ferryx/releases/latest
 
-If you run agents in cmux, tmux or Orca today, I'd like to hear what annoys you about it.
+If you run several agents in a terminal today, I'd like to hear what annoys you about it.

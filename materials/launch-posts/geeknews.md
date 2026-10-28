@@ -15,9 +15,9 @@ URL: https://github.com/Indosaram/ferryx
 
 본문:
 
-Claude Code, Codex 같은 에이전트 여러 개를 터미널 탭에 띄워 놓고 쓰는 용도로 만든 데스크톱 터미널입니다. cmux랑 비슷한 물건인데, cmux는 macOS 전용이라 Windows·Linux에서도 돌게 만들었습니다.
+Claude Code, Codex 같은 에이전트 여러 개를 터미널 탭에 띄워 놓고 쓰는 용도로 만든 데스크톱 터미널입니다. macOS, Windows, Linux에서 다 돕니다.
 
-cmux랑 다르게 신경 쓴 건 이 두 개예요.
+특히 신경 쓴 건 이 두 개예요.
 
 1. 앱을 닫아도 에이전트가 안 죽습니다. 터미널은 창이 아니라 Rust로 만든 백그라운드 데몬이 들고 있어서, 앱을 껐다 켜면 돌던 세션에 그대로 다시 붙고 그동안 놓친 출력도 다시 보여줍니다.
 2. 원격 Linux 서버를 SSH 없이 붙입니다. 서버에 ferryx-cli를 깔면 서버 쪽에서 릴레이로 먼저 연결하는 방식이라 포트를 열거나 공인 IP가 없어도 됩니다. 릴레이는 직접 띄울 수도 있습니다.
@@ -28,4 +28,4 @@ cmux랑 다르게 신경 쓴 건 이 두 개예요.
 
 받기: https://github.com/Indosaram/ferryx/releases/latest
 
-cmux나 tmux로 에이전트 돌리면서 제일 불편했던 거 알려주시면 우선순위에 넣겠습니다.
+지금 쓰시는 터미널로 에이전트 돌리면서 제일 불편했던 거 알려주시면 우선순위에 넣겠습니다.

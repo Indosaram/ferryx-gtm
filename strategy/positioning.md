@@ -41,11 +41,10 @@ port.
 
 ## One line
 
-- EN: **"A native terminal for coding agents, like cmux but on Windows and Linux too. Agents keep running when you close the app, and remote boxes connect without SSH."**
-- KO: **"cmux 같은 코딩 에이전트용 네이티브 터미널인데 Windows·Linux에서도 돕니다. 앱을 닫아도 에이전트는 계속 돌고, 원격 서버는 SSH 없이 붙습니다."**
+- EN: **"A native terminal for coding agents on macOS, Windows and Linux. Agents keep running when you close the app, and remote boxes connect without SSH."**
+- KO: **"macOS·Windows·Linux에서 도는 코딩 에이전트용 네이티브 터미널. 앱을 닫아도 에이전트는 계속 돌고, 원격 서버는 SSH 없이 붙습니다."**
 
-Naming cmux in the pitch is deliberate. Readers already know it, and it answers "what is this" in
-two words. The site already has honest comparison pages to link (`/compare/cmux/`, `/compare/orca/`).
+Do not name cmux, Orca or other products in the site copy or post headlines (owner rule, 2026-10-29). Comparisons live only on the site's `/compare/` pages and in replies to people who ask.
 
 ## Beachhead (first users to target)
 
